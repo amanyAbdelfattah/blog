@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,7 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return "Hello from index page";
+        //
+        return view("admin.users.all");
     }
 
     /**
@@ -24,7 +25,7 @@ class UserController extends Controller
     public function create()
     {
         //
-        return "Hello from create page";
+        return view("admin.users.create");
     }
 
     /**
@@ -47,7 +48,6 @@ class UserController extends Controller
     public function show($id)
     {
         //
-        return "Hello from show page " . $id;
     }
 
     /**

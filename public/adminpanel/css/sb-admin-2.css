@@ -10830,9 +10830,11 @@ a:focus {
 }
 
 .bg-register-image {
-  background: url("https://source.unsplash.com/Mv9hjnEUHR4/600x800");
+  /*https://cleaningfairy.org/images/logo2.png*/
+  background: url("/adminpanel/img/logo.png");
   background-position: center;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .bg-password-image {
