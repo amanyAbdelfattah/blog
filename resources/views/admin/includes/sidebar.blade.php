@@ -26,8 +26,40 @@
     <div class="sidebar-heading">
         Interface
     </div>
+    <!-- User Tab-->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Control Users</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{route('user.index')}}"><i class="fas fa-fw fa-user"></i> All Users</a>
+                <a class="collapse-item" href="{{route('user.create')}}"><i class="fas fa-fw fa-user-plus"></i> Add User</a>
+            </div>
+        </div>
+    </li>
+    <!--End User Tab-->
 
-    <!-- Nav Item - Pages Collapse Menu -->
+    <!-- Post Tab-->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+            aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Control Posts</span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{route('post.index')}}"><i class="fas fa-paste"></i> All Posts</a>
+                <a class="collapse-item" href="{{route('post.create')}}"><i class="fas fa-edit"></i> Add Post</a>
+            </div>
+        </div>
+    </li>
+    <!--End Post Tab-->
+    
+    {{-- <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
@@ -41,10 +73,10 @@
                 <a class="collapse-item" href="cards.html">Cards</a>
             </div>
         </div>
-    </li>
+    </li> --}}
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
@@ -60,7 +92,7 @@
                 <a class="collapse-item" href="utilities-other.html">Other</a>
             </div>
         </div>
-    </li>
+    </li> --}}
 
     <!-- Divider -->
     <hr class="sidebar-divider">

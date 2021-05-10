@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <title>Admin Side | @yield('title')</title>
-
+    <link rel="icon" href="/adminpanel/img/logo.png">
     <!-- Custom fonts for this template-->
     <link href="{{URL::asset('adminpanel/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
     <link

@@ -4060,7 +4060,13 @@ input[type="button"].btn-block {
 .nav-pills .nav-link {
   border-radius: 0.35rem;
 }
-
+.pagination {
+  display: flex;
+  padding-left: 0;
+  margin: auto;
+  list-style: none;
+  border-radius: 0.35rem;
+}
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;

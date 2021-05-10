@@ -1,14 +1,15 @@
 @extends('layouts.admin')
-@section('title') Dashboard @endsection
+@section('title') All Posts @endsection
 @section ('content')
+
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
             <div class="p-5">
                 <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">All Users</h1>
+                    <h1 class="h4 text-gray-900 mb-4">All Posts</h1>
                 </div>
-                <a class="btn btn-primary" href="{{route('user.create')}}">Add User</a>
+                <a class="btn btn-primary" href="{{route('post.create')}}">Add Post</a>
             </div>
     <div class="row">
         @if (Session::has('success'))
@@ -22,21 +23,21 @@
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">Username</th>
-            <th scope="col">Email</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
             <th scope="col">Control</th>
         </tr>
         </thead>
         <tbody>
-            @foreach ($users as $user)
+            @foreach ($posts as $post)
             <tr>
-                <th scope="row">{{$user->name}}</th>
-                <td>{{$user->email}}</td>
+                <th scope="row">{{$post->title}}</th>
+                <td>{{$post->description}}</td>
                 <td class="d-flex">
-                    <a class="btn btn-info m-1" href="{{route('user.show' , $user->id)}}">Show</a>
-                    <a class="btn btn-warning m-1" href="{{route('user.edit' , $user->id)}}">Edit</a>
+                    <a class="btn btn-info m-1" href="{{route('post.show' , $post->id)}}">Show</a>
+                    <a class="btn btn-warning m-1" href="{{route('post.edit' , $post->id)}}">Edit</a>
                     {{-- <a class="btn btn-danger" href="">Delete</a> --}}
-                    <form method="POST" action="{{route('user.destroy' , $user->id)}}">
+                    <form method="POST" action="{{route('post.destroy' , $post->id)}}">
                         @csrf
                         {{method_field('DELETE')}}
                         <input type="submit" class="btn btn-danger m-1" value="Delete">
@@ -48,7 +49,7 @@
         </tbody>
     </table>
     <div class="container">
-        {{$users->links()}}
+        {{$posts->links()}}
     </div>
     
 </div>

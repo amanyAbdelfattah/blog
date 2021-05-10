@@ -36,8 +36,8 @@ Route::get('/', function () {
 Route::get("/user" ,[Index::class , 'index']);
 
 Route::prefix("user")->group(function(){
-    Route::get('/feedback' , function(){
-        return view('user.feedback');
+    Route::get('/jobrequest' , function(){
+        return view('user.jobrequest');
     });
 });
 Auth::routes();

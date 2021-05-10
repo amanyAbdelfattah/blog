@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -13,8 +16,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
-        return view("admin.users.all");
+        //SELECT * FROM users
+        //$users = User::all()
+
+        $users = User::paginate(5);
+        return view("admin.users.all" , compact('users')); //compact is a function in PHP , This users is the same as $users 
     }
 
     /**
@@ -36,7 +42,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //insert in DB with validation
+        $validator = Validator::make($request->all() , [
+            'name' => ['required', 'min:4' , 'max:225'],
+            'email' => ['required' , 'email' , 'unique:users'],
+            'password' => ['required' , 'min:8']
+        ]);
+        // ERROR: There is no validation rule named string
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator)->withInput($request->all());
+        }
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        return redirect()->back()->with(['success' => 'User has been added']);
     }
 
     /**
@@ -47,7 +69,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        //SELECT * users WHERE id=?
+        $user = User::findOrFail($id);
+        return view('admin.users.profile' , compact('user'));
     }
 
     /**
@@ -59,6 +83,8 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        $user = User::findOrFail($id);
+        return view('admin.users.edit' , compact('user'));
     }
 
     /**
@@ -71,6 +97,20 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validator = Validator::make($request->all() , [
+            'name' => ['required', 'min:4' , 'max:225'],
+            'email' => ['required' , 'email' , 'unique:users']
+        ]);
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator)->withInput($request->all());
+        }
+        $user = User::findOrFail($id);
+        $user->update([
+            'name' => $request->name ,
+            'email' => $request->email
+        ]);
+        return redirect()->back()->with(['success' => 'User has been updated']);
     }
 
     /**
@@ -82,5 +122,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->back()->with(['success' => 'User has been deleted']);
     }
 }

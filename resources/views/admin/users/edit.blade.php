@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title') Create User @endsection
+@section('title') Edit User @endsection
 @section ('content')
 
 <!DOCTYPE html>
@@ -35,13 +35,12 @@
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
-                    {{-- <div class="col-lg-5 d-none d-lg-block bg-register-image"></div> --}}
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create User Account!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Edit User!</h1>
                             </div>
-                            <form method="POST" action="{{route('user.store')}}" class="user">
+                            <form method="POST" action="{{route('user.update' , $user->id)}}" class="user">
                                 <div class="row">
                                     @if (Session::has('success'))
                                     <div class="card col-12 mb-4 py-3 border-left-success">
@@ -53,9 +52,10 @@
                                 </div>
                                 <div class="form-group row">
                                     @csrf
+                                    {{method_field('PUT')}}
                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user"
-                                        name="name" placeholder="Username">
+                                        name="name" value="{{$user->name}}">
                                         @error('name')
                                         <small class="text-danger"> {{$message}} </small> 
                                         @enderror
@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user"
-                                    name="email" placeholder="Email Address">
+                                    name="email" value="{{$user->email}}">
                                     @error('email')
                                 <small class="text-danger"> {{$message}} </small>
                                     @enderror
@@ -77,7 +77,7 @@
                                     @enderror
                                     </div>
                                 </div>
-                                <input type="submit" value="Register Account" class="btn btn-primary btn-user btn-block">
+                                <input type="submit" value="Update Account" class="btn btn-primary btn-user btn-block">
                             </form>
                         </div>
                     </div>
