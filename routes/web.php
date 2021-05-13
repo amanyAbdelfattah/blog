@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\Index;
+use App\Http\Controllers\User\JobappController;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,9 +39,7 @@ Route::get('/', function () {
 Route::get("/user" ,[Index::class , 'index']);
 
 Route::prefix("user")->group(function(){
-    Route::get('/jobrequest' , function(){
-        return view('user.jobrequest');
-    });
+    Route::resource("/jobreq" , JobappController::class);
 });
 Auth::routes();
 

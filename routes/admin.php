@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\User\JobappController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +23,6 @@ Route::prefix("admin")->group(function(){
 
     Route::resource("/user" , UserController::class);
     Route::resource("/post" , PostController::class);
-
-    
+    Route::resource("/jobapp" , JobappController::class);
 });
 
