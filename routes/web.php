@@ -39,7 +39,7 @@ Route::get('/', function () {
 Route::get("/user" ,[Index::class , 'index']);
 
 Route::prefix("user")->group(function(){
-    Route::resource("/jobreq" , JobappController::class);
+    Route::resource("/jobapp" , JobappController::class);
 });
 Auth::routes();
 

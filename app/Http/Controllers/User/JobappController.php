@@ -11,10 +11,10 @@ class JobappController extends Controller
     //
     public function index()
     {
+        // $jobapps = Jobapp::paginate(5);
+        // return view("admin.applicantsreq.allreq" , compact('jobapps'));
         $jobapps = Jobapp::paginate(5);
-        return view("admin.applicantsreq.allreq" , compact('jobapps'));
-        // $Jobapps = Jobapp::paginate(5);
-        // return view("user.jobrequests.jobform" , compact('Jobapps'));
+        return view("user.jobrequests.jobform" , compact('jobapps'));
     }
     public function create()
     {
@@ -45,5 +45,12 @@ class JobappController extends Controller
             'experience' => $request->experience
         ]);
         return redirect()->back()->with(['success' => 'Your request has been submitted']);
+    }
+    public function destroy($id)
+    {
+        //
+        $jobapp = Jobapp::findOrFail($id);
+        $jobapp->delete();
+        return redirect()->back()->with(['success' => 'Applicant has been deleted']);
     }
 }

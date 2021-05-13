@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\ApplicantController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\User\JobappController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,11 +18,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get("/admin" , [DashboardController::class , 'index']);
+
 // -----Admin Pannel-----
 Route::prefix("admin")->group(function(){
 
     Route::resource("/user" , UserController::class);
     Route::resource("/post" , PostController::class);
-    Route::resource("/jobapp" , JobappController::class);
+    Route::resource("/jobreq" , ApplicantController::class);
 });
 
