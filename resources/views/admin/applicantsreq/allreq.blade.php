@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 @section('title') Job Requests @endsection
 @section ('content')
-    <div class="container">
+    <div class="container-fluid">
         
     {{-- $in_DB = 1;
     if($count == $in_DB):?>
     <h1 class="text-center mt-5">Pending Requests</h1> --}}
     <h1 class="text-gray-900 my-4 text-center">Pending Requests</h1>
-    <table class="table table-striped mt-5">
+    <table class="table table-striped mt-5 text-center" style="font-weight:500">
     <thead>
         <tr>
             <th scope="col">Fullname</th>
