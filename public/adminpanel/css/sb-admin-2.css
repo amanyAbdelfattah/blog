@@ -4066,6 +4066,8 @@ input[type="button"].btn-block {
   margin: auto;
   list-style: none;
   border-radius: 0.35rem;
+  align-content: stretch;
+  justify-content: center;
 }
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\ApplicantController;
+
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
@@ -16,14 +16,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get("/admin" , [DashboardController::class , 'index']);
+Route::get("/admin" , "Admin\DashboardController@index");
 
 // -----Admin Pannel-----
 Route::prefix("admin")->group(function(){
 
-    Route::resource("/user" , UserController::class);
-    Route::resource("/post" , PostController::class);
-    Route::resource("/jobreq" , ApplicantController::class);
+    Route::resource("/user" , 'Admin\UserController');
+    Route::resource("/post" , 'Admin\PostController');
+
 });
 

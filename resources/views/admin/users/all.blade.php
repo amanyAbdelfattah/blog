@@ -24,6 +24,10 @@
         <tr>
             <th scope="col">Username</th>
             <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Age</th>
+            <th scope="col">Experience</th>
             <th scope="col">Control</th>
         </tr>
         </thead>
@@ -32,6 +36,10 @@
             <tr>
                 <th scope="row">{{$user->name}}</th>
                 <td>{{$user->email}}</td>
+                <td>{{$user->address}}</td>
+                <td>{{$user->phoneno}}</td>
+                <td>{{$user->age}}</td>
+                <td>{{$user->experience}}</td>
                 <td class="d-flex">
                     <a class="btn btn-info m-1" href="{{route('user.show' , $user->id)}}">Show</a>
                     <a class="btn btn-warning m-1" href="{{route('user.edit' , $user->id)}}">Edit</a>

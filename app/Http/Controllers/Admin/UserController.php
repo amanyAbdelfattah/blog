@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -20,7 +21,10 @@ class UserController extends Controller
         //$users = User::all()
 
         $users = User::paginate(5);
-        return view("admin.users.all" , compact('users')); //compact is a function in PHP , This users is the same as $users 
+        // $users = Post::find(1);
+        // return $users->post->title;
+        return view("admin.users.all" , compact('users')); 
+        //compact is a function in PHP , This users is the same as $users 
     }
 
     /**
@@ -46,7 +50,11 @@ class UserController extends Controller
         $validator = Validator::make($request->all() , [
             'name' => ['required', 'min:4' , 'max:225'],
             'email' => ['required' , 'email' , 'unique:users'],
-            'password' => ['required' , 'min:8']
+            'password' => ['required' , 'min:8'],
+            'address' => ['required', 'unique:jobapps'],
+            'phoneno' => ['required', 'unique:jobapps'],
+            'age' => ['required'],
+            'experience' => ['required'],
         ]);
         // ERROR: There is no validation rule named string
         if($validator->fails())
@@ -57,6 +65,10 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'address'=>$request->address,
+            'phoneno'=>$request->phoneno,
+            'age'=>$request->age,
+            'experience'=>$request->experience
         ]);
         return redirect()->back()->with(['success' => 'User has been added']);
     }
@@ -99,7 +111,11 @@ class UserController extends Controller
         //
         $validator = Validator::make($request->all() , [
             'name' => ['required', 'min:4' , 'max:225'],
-            'email' => ['required' , 'email' , 'unique:users']
+            'email' => ['required' , 'email' , 'unique:users'],
+            'address' => ['required', 'unique:jobapps'],
+            'phoneno' => ['required', 'unique:jobapps'],
+            'age' => ['required'],
+            'experience' => ['required'],
         ]);
         if($validator->fails())
         {
@@ -108,7 +124,11 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->update([
             'name' => $request->name ,
-            'email' => $request->email
+            'email' => $request->email,
+            'address'=>$request->address,
+            'phoneno'=>$request->phoneno,
+            'age'=>$request->age,
+            'experience'=>$request->experience
         ]);
         return redirect()->back()->with(['success' => 'User has been updated']);
     }

@@ -11,8 +11,6 @@ class JobappController extends Controller
     //
     public function index()
     {
-        // $jobapps = Jobapp::paginate(5);
-        // return view("admin.applicantsreq.allreq" , compact('jobapps'));
         $jobapps = Jobapp::paginate(5);
         return view("user.jobrequests.jobform" , compact('jobapps'));
     }

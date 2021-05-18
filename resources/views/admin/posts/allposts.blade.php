@@ -25,6 +25,7 @@
         <tr>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
+            <th scope="col">Written By</th>
             <th scope="col">Control</th>
         </tr>
         </thead>
@@ -33,6 +34,7 @@
             <tr>
                 <th scope="row">{{$post->title}}</th>
                 <td>{{$post->description}}</td>
+                <td>{{$post->user->name}}</td>
                 <td class="d-flex">
                     <a class="btn btn-info m-1" href="{{route('post.show' , $post->id)}}">Show</a>
                     <a class="btn btn-warning m-1" href="{{route('post.edit' , $post->id)}}">Edit</a>
@@ -51,6 +53,5 @@
     <div class="container">
         {{$posts->links()}}
     </div>
-    
 </div>
 @endsection

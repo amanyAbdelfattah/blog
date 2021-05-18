@@ -1,9 +1,8 @@
 <?php
-
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\User\Index;
-use App\Http\Controllers\User\JobappController;
+use App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,11 +34,16 @@ Route::get('/', function () {
 // {
 //     return "Hello From Category page";
 // });
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]],function(){
+    Route::get('test',function(){
+		return view('admin.dashboard');
+	});
+});
 
-Route::get("/user" ,[Index::class , 'index']);
+Route::get("/user" ,'User\Index@index');
 
 Route::prefix("user")->group(function(){
-    Route::resource("/jobapp" , JobappController::class);
+    Route::resource("/jobapp" , 'User\JobappController');
 });
 Auth::routes();
 

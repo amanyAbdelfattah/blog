@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Admin\Post;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -16,11 +17,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','address','phoneno','age','experience'
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+                                         * The attributes that should be hidden for arrays.
      *
      * @var array
      */
@@ -36,4 +37,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function post()
+    {
+        return $this->hasMany(Post::class , 'user_id');
+    }
 }

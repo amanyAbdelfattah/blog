@@ -77,6 +77,34 @@
                                     @enderror
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user"
+                                    name="address" value="{{$user->address}}">
+                                    @error('address')
+                                <small class="text-danger"> {{$message}} </small>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user"
+                                    name="phoneno" value="{{$user->phoneno}}">
+                                    @error('phoneno')
+                                <small class="text-danger"> {{$message}} </small>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user"
+                                    name="age" value="{{$user->age}}">
+                                    @error('age')
+                                <small class="text-danger"> {{$message}} </small>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user"
+                                    name="experience" value="{{$user->experience}}">
+                                    @error('experience')
+                                <small class="text-danger"> {{$message}} </small>
+                                    @enderror
+                                </div>
                                 <input type="submit" value="Update Account" class="btn btn-primary btn-user btn-block">
                             </form>
                         </div>

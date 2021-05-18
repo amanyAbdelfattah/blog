@@ -77,6 +77,42 @@
                                     @enderror
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user"
+                                    name="address" placeholder="Address">
+                                    @error('address')
+                                    <small class="text-danger"> {{$message}} </small>
+                                    @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                        <input type="number" class="form-control form-control-user"
+                                    name="phoneno" placeholder="Phone Number">
+                                    @error('phoneno')
+                                    <small class="text-danger"> {{$message}} </small>
+                                    @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                        <input type="number" class="form-control form-control-user"
+                                    name="age" placeholder="Age">
+                                    @error('age')
+                                    <small class="text-danger"> {{$message}} </small>
+                                    @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                        <input type="number" class="form-control form-control-user"
+                                    name="experience" placeholder="Years of Experience">
+                                    @error('experience')
+                                    <small class="text-danger"> {{$message}} </small>
+                                    @enderror
+                                    </div>
+                                </div>
                                 <input type="submit" value="Register Account" class="btn btn-primary btn-user btn-block">
                             </form>
                         </div>

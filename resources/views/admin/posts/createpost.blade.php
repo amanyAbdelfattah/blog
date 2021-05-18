@@ -68,6 +68,13 @@
                                 <small class="text-danger"> {{$message}} </small>
                                     @enderror
                                 </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user"
+                                    name="user_id" placeholder="UserID">
+                                    @error('user_id')
+                                <small class="text-danger"> {{$message}} </small>
+                                    @enderror
+                                </div>
                                 <input type="submit" value="Add Post" class="btn btn-primary btn-user btn-block">
                             </form>
                         </div>

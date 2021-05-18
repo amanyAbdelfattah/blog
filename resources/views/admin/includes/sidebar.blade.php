@@ -26,6 +26,7 @@
     <div class="sidebar-heading">
         Interface
     </div>
+    
     <!-- User Tab-->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -57,8 +58,20 @@
             </div>
         </div>
     </li>
+    
     <!--End Post Tab-->
     
+    <!--Job Applicantions-->
+
+    {{-- <li class="nav-item">
+        <a class="nav-link" href="{{route('jobreq.index')}}">
+            <i class="fas fa-user-tie"></i>
+            <span>Job Request</span></a>
+    </li> --}}
+
+        <!--End Job Applicantions-->
+
+
     {{-- <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"

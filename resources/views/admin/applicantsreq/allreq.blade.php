@@ -38,7 +38,7 @@
             <td>{{$jobapp->age}}</td>
             <td>{{$jobapp->experience}}</td>
             <td class="d-flex">
-                <a class="btn btn-success m-1" href="{{route('jobapp.show' , $jobapp->id)}}">Accept</a>
+                <a class="btn btn-success m-1" href="{{route('test' , $id)}}">Accept</a>
                 {{-- <a class="btn btn-danger" href="">Delete</a> --}}
                 <form method="POST" action="{{route('jobapp.destroy' , $jobapp->id)}}">
                     @csrf
