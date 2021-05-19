@@ -12,7 +12,7 @@ class PostController extends Controller
 
     public function AllPosts(User $user, Post $post){
         $posts = $post->where("user_id", "=", $user->id)->get();
-        return view('your.view' , compact('posts'));
+        return view('admin.users.all' , compact('posts'));
     }
 
     public function index()

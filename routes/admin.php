@@ -4,6 +4,8 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ApplicantController;
+use App\Http\Controllers\RelationsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +25,12 @@ Route::prefix("admin")->group(function(){
 
     Route::resource("/user" , 'Admin\UserController');
     Route::resource("/post" , 'Admin\PostController');
-
+    Route::get('/jobreq' , 'Admin\ApplicantController@index');
+    // Route::get('/{id}', [
+    //     'as' => 'test',
+    //     'uses' => 'Admin\ApplicantController@test',
+    // ]);
+    Route::get('/user-has-many' , 'RelationsController@UserhasMany');
+    Route::get('/user-has-many-reverse' , 'RelationsController@UserhasManyReverse');
 });
 

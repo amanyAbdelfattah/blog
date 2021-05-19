@@ -29,6 +29,7 @@ class JobappController extends Controller
             'phoneno' => ['required', 'unique:jobapps'],
             'age' => ['required'],
             'experience' => ['required'],
+            'password' => ['required'],
         ]);
         if($validator->fails())
         {
@@ -40,7 +41,8 @@ class JobappController extends Controller
             'address' => $request->address,
             'phoneno' => $request->phoneno,
             'age' => $request->age,
-            'experience' => $request->experience
+            'experience' => $request->experience,
+            'password' => $request->password
         ]);
         return redirect()->back()->with(['success' => 'Your request has been submitted']);
     }

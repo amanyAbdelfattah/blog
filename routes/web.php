@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers;
+use App\Http\Controllers\RelationsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -45,6 +46,10 @@ Route::get("/user" ,'User\Index@index');
 Route::prefix("user")->group(function(){
     Route::resource("/jobapp" , 'User\JobappController');
 });
+Route::get('/has-one' , 'RelationsController@hasOne');
+Route::get('/has-one-reverse' , 'RelationsController@hasOneReverse');
+Route::get('/has-many-reverse' , 'RelationsController@hasManyReverse');
+Route::get('/has-many' , 'RelationsController@hasMany');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
