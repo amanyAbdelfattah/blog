@@ -16,7 +16,7 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Please enter your information!</h1>
                             </div>
-                            <form method="POST" action="{{route('jobapp.store')}}" class="user">
+                            <form method="POST" action="{{route('user.store')}}" class="user">
                                 <div class="row">
                                     @if (Session::has('success'))
                                     <div class="card col-12 mb-4 py-3 border-left-success">
@@ -88,7 +88,7 @@
                                     @enderror
                                     </div>
                                 </div>
-                                <input type="submit" value="Register Account" class="btn btn-primary btn-user btn-block">
+                                <input type="submit" value="Submit" class="btn btn-primary btn-user btn-block">
                             </form>
                         </div>
                     </div>

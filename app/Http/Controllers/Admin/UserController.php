@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -21,6 +22,9 @@ class UserController extends Controller
         //$users = User::all()
 
         $users = User::paginate(5);
+        $users = DB::table('users')
+        ->where('approved', '=', 0)
+        ->get();
         // $users = Post::find(1);
         // return $users->post->title;
         return view("admin.users.all" , compact('users')); 
@@ -51,8 +55,8 @@ class UserController extends Controller
             'name' => ['required', 'min:4' , 'max:225'],
             'email' => ['required' , 'email' , 'unique:users'],
             'password' => ['required' , 'min:8'],
-            'address' => ['required', 'unique:jobapps'],
-            'phoneno' => ['required', 'unique:jobapps'],
+            'address' => ['required'],
+            'phoneno' => ['required', 'unique:users'],
             'age' => ['required'],
             'experience' => ['required'],
         ]);
@@ -112,8 +116,8 @@ class UserController extends Controller
         $validator = Validator::make($request->all() , [
             'name' => ['required', 'min:4' , 'max:225'],
             'email' => ['required' , 'email' , 'unique:users'],
-            'address' => ['required', 'unique:jobapps'],
-            'phoneno' => ['required', 'unique:jobapps'],
+            'address' => ['required'],
+            'phoneno' => ['required', 'unique:users'],
             'age' => ['required'],
             'experience' => ['required'],
         ]);
@@ -128,7 +132,8 @@ class UserController extends Controller
             'address'=>$request->address,
             'phoneno'=>$request->phoneno,
             'age'=>$request->age,
-            'experience'=>$request->experience
+            'experience'=>$request->experience,
+            'approved' => 0
         ]);
         return redirect()->back()->with(['success' => 'User has been updated']);
     }

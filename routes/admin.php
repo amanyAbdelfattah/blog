@@ -18,19 +18,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get("/admin" , "Admin\DashboardController@index");
+Route::get("/admin" , "Admin\DashboardController@index")->middleware('auth','check.admin')->name('admin-view');
 
 // -----Admin Pannel-----
-Route::prefix("admin")->group(function(){
+Route::middleware('auth','check.admin')->prefix("admin")->group(function(){
 
+    // Route::post('accept/{id}', 'Admin\UserController@approve');
     Route::resource("/user" , 'Admin\UserController');
     Route::resource("/post" , 'Admin\PostController');
-    Route::get('/jobreq' , 'Admin\ApplicantController@index');
-    // Route::get('/{id}', [
-    //     'as' => 'test',
-    //     'uses' => 'Admin\ApplicantController@test',
-    // ]);
+    Route::resource('/jobreq' , 'Admin\ApplicantController');
     Route::get('/user-has-many' , 'RelationsController@UserhasMany');
     Route::get('/user-has-many-reverse' , 'RelationsController@UserhasManyReverse');
 });
-

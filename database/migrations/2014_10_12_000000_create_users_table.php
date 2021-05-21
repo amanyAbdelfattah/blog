@@ -23,6 +23,11 @@ class CreateUsersTable extends Migration
             $table->integer('experience');
             // $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('admin');
+            $table->boolean('approved');
+            // $table->string('provider');
+            // $table->string('provider_id');
+            // $table->text('avatar');
             $table->rememberToken();
             $table->timestamps();
         });

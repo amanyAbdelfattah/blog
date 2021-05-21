@@ -50,6 +50,14 @@ Route::get('/has-one' , 'RelationsController@hasOne');
 Route::get('/has-one-reverse' , 'RelationsController@hasOneReverse');
 Route::get('/has-many-reverse' , 'RelationsController@hasManyReverse');
 Route::get('/has-many' , 'RelationsController@hasMany');
+Route::get('/login', 'Web\AppController@getLogin' )
+        ->name('login')
+        ->middleware('guest');
+        Route::get( '/login/{social}', 'Web\AuthenticationController@getSocialRedirect' )
+        ->middleware('guest');
+
+Route::get( '/login/{social}/callback', 'Web\AuthenticationController@getSocialCallback' )
+        ->middleware('guest');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

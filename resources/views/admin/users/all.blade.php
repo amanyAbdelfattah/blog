@@ -43,7 +43,7 @@
                 <td class="d-flex">
                     <a class="btn btn-info m-1" href="{{route('user.show' , $user->id)}}">Show</a>
                     <a class="btn btn-warning m-1" href="{{route('user.edit' , $user->id)}}">Edit</a>
-                    <a class="btn btn-info m-1" href="{{route('post.show' , $user->id)}}">Posts</a>
+                    {{-- <a class="btn btn-info m-1" href="{{route('post.show' , $user->id)}}">Posts</a> --}}
                     {{-- <a class="btn btn-danger" href="">Delete</a> --}}
                     <form method="POST" action="{{route('user.destroy' , $user->id)}}">
                         @csrf
@@ -56,9 +56,9 @@
         
         </tbody>
     </table>
-    <div class="container">
+    {{-- <div class="container">
         {{$users->links()}}
-    </div>
+    </div> --}}
     
 </div>
 @endsection

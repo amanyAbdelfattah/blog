@@ -1,6 +1,5 @@
 <?php
-
-namespace App\Models;
+namespace App;
 
 use App\Models\Admin\Post;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -17,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','admin','address','phoneno','age','experience' , 'approved'
+        'name', 'email', 'password','address','phoneno','age','experience'
     ];
 
     /**
@@ -37,14 +36,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function post()
-    {
-        return $this->hasMany(Post::class , 'user_id' , 'id');
-    }
-
-    public function phone()
-    {
-        return $this->hasOne(Phone::class , 'user_id');
-    }
 }
+?>

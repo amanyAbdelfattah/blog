@@ -61,6 +61,38 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">address</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="address">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">phone</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="phone">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">age</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="age">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">experience</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="experience">
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

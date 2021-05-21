@@ -15,6 +15,7 @@
         <p class="card-text d-block">Phone Number: <span>{{$user->phoneno}}</span></p>
         <p class="card-text d-block">Age: <span>{{$user->age}}</span></p>
         <p class="card-text d-block">Years of Experience: <span>{{$user->experience}}</span></p>
+        <p class="card-text d-block">Posts: <span>{{$user->post}}</span></p>
         </div>
     </div>
     </div>

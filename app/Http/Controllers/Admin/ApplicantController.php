@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\User\Jobapp;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ApplicantController extends Controller
 {
@@ -17,31 +18,31 @@ class ApplicantController extends Controller
         //SELECT * FROM users
         //$users = User::all()
 
-        $jobapps = Jobapp::paginate(5);
+        $users = DB::table('users')
+                ->where('approved', '=', 1)
+                ->get();
         // $users = Post::find(1);
         // return $users->post->title;
-        return view("admin.jobreqs.allreq" , compact('jobapps')); 
+        return view("admin.jobreqs.allreq" , compact('users')); 
         //compact is a function in PHP , This users is the same as $users 
     }
 
-//     public function test($id)
-// {
-//     $jobapps = Jobapp::where('id', $id); //this will select the row with the given id
 
-//     //now save the data in the variables;
-//     $name = $jobapps->name;
-//     $email = $jobapps->email;
-//     $password = $jobapps->password;
-//     $jobapps->delete();
+    public function edit($id)
+    {
+        //
+        $user = User::findOrFail($id);
+        return view('admin.jobreqs.allreq' , compact('user'));
+    }
 
-//     $users = new User();
-//     $users->name = $name;
-//     $users->email = $email;
-//     $users->password = $password;
-//     $users->save();
-
-//     //then return to your view or whatever you want to do
-//     return view('admin.jobreqs.allreq');
-
-// }
+    public function update(Request $request, $id)
+    {
+        //
+    
+        $user = User::findOrFail($id);
+        $user->update([
+            'approved' => $request->approved
+        ]);
+        return redirect()->back()->with(['success' => 'User has been updated']);
+    }
 }

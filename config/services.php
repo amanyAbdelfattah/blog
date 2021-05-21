@@ -29,5 +29,14 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
-
+    'github' => [
+        'client_id' => env('GITHUB_CLIENT_ID'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET'),
+        'redirect' => 'http://example.com/callback-url',
+    ],
+    'facebook' => [
+        'client_id' => env('1942039762624667'),
+        'client_secret' => env('f49706243ded4f3737a9036fb7f787cb'),
+        'redirect' => env('https://roast.dev/login/facebook/callback'),
+    ]
 ];

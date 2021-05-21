@@ -29,18 +29,24 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($jobapps as $jobapp)
+        @foreach ($users as $user)
         <tr>
-            <th scope="row">{{$jobapp->name}}</th>
-            <td>{{$jobapp->email}}</td>
-            <td>{{$jobapp->address}}</td>
-            <td>{{$jobapp->phoneno}}</td>
-            <td>{{$jobapp->age}}</td>
-            <td>{{$jobapp->experience}}</td>
+            <th scope="row">{{$user->name}}</th>
+            <td>{{$user->email}}</td>
+            <td>{{$user->address}}</td>
+            <td>{{$user->phoneno}}</td>
+            <td>{{$user->age}}</td>
+            <td>{{$user->experience}}</td>
             <td class="d-flex">
-                <a class="btn btn-success m-1" href="">Accept</a>
-                {{-- <a class="btn btn-danger" href="">Delete</a> || {{route('test' , $id)}}--}}
-                <form method="POST" action="{{route('jobapp.destroy' , $jobapp->id)}}">
+                <form method="POST" action="{{route('jobreq.update' , $user->id)}}">
+                    @csrf
+                     {{method_field('PUT')}}
+                     <input type="hidden" value="0" name="approved">
+                     <input type="submit" class="btn btn-success m-1" value="Accept">
+                </form>
+               {{--<a class="btn btn-success m-1" href="{{route('user.update' , $user->id)}}">Accept</a>--}} 
+                {{-- <a class="btn btn-danger" href="">Delete</a> || --}}
+                <form method="POST" action="{{route('user.destroy' , $user->id)}}">
                     @csrf
                     {{method_field('DELETE')}}
                     <input type="submit" class="btn btn-danger m-1" value="Reject">
@@ -51,8 +57,8 @@
     
     </tbody>
 </table>
-<div class="container">
-    {{$jobapps->links()}}
-</div>
+{{-- <div class="container">
+    {{$users->links()}}
+</div> --}}
 </div>
 @endsection
