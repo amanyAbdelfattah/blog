@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Post;
 use App\Models\User;
+use App\User as AppUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -52,6 +53,7 @@ class UserController extends Controller
     {
         //insert in DB with validation
         $validator = Validator::make($request->all() , [
+            'image' => ['required'],
             'name' => ['required', 'min:4' , 'max:225'],
             'email' => ['required' , 'email' , 'unique:users'],
             'password' => ['required' , 'min:8'],
@@ -65,15 +67,35 @@ class UserController extends Controller
         {
             return redirect()->back()->withErrors($validator)->withInput($request->all());
         }
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'address'=>$request->address,
-            'phoneno'=>$request->phoneno,
-            'age'=>$request->age,
-            'experience'=>$request->experience
-        ]);
+        // User::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password),
+        //     'address'=>$request->address,
+        //     'phoneno'=>$request->phoneno,
+        //     'age'=>$request->age,
+        //     'experience'=>$request->experience
+        // ]);
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+        $user->address = $request->input('address');
+        $user->phoneno = $request->input('phoneno');
+        $user->age = $request->input('age');
+        $user->experience = $request->input('experience');
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('uploads/user/' , $filename);
+            $user->image = $filename;
+        }
+        else{
+            return $request;
+            $user->image = '';
+        }
+        $user->save();
         return redirect()->back()->with(['success' => 'User has been added']);
     }
 
@@ -115,9 +137,9 @@ class UserController extends Controller
         //
         $validator = Validator::make($request->all() , [
             'name' => ['required', 'min:4' , 'max:225'],
-            'email' => ['required' , 'email' , 'unique:users'],
+            'email' => ['required' , 'email'],
             'address' => ['required'],
-            'phoneno' => ['required', 'unique:users'],
+            'phoneno' => ['required',],
             'age' => ['required'],
             'experience' => ['required'],
         ]);
@@ -126,15 +148,36 @@ class UserController extends Controller
             return redirect()->back()->withErrors($validator)->withInput($request->all());
         }
         $user = User::findOrFail($id);
-        $user->update([
-            'name' => $request->name ,
-            'email' => $request->email,
-            'address'=>$request->address,
-            'phoneno'=>$request->phoneno,
-            'age'=>$request->age,
-            'experience'=>$request->experience,
-            'approved' => 0
-        ]);
+        $user->image = $request->input('image');
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->address = $request->input('address');
+        $user->phoneno = $request->input('phoneno');
+        $user->age = $request->input('age');
+        $user->experience = $request->input('experience');
+
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('uploads/user/' , $filename);
+            $user->image = $filename;
+        }
+        else{
+            return $request;
+            $user->image = '';
+        }
+        $user->update();
+        // $user = User::findOrFail($id);
+        // $user->update([
+        //     'name' => $request->name ,
+        //     'email' => $request->email,
+        //     'address'=>$request->address,
+        //     'phoneno'=>$request->phoneno,
+        //     'age'=>$request->age,
+        //     'experience'=>$request->experience,
+        //     'approved' => 0
+        // ]);
         return redirect()->back()->with(['success' => 'User has been updated']);
     }
 

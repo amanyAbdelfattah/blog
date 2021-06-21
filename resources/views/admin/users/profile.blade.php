@@ -6,7 +6,7 @@
 <div class="card mb-3" style="max-width: 100%;">
     <div class="row g-0">
     <div class="col-md-4">
-        <img src="\adminpanel\img\avatar.jpg" alt="..." style="max-width:100%;border-right: 5px solid dodgerblue">
+        <img src="{{asset('uploads/user/' . $user->image)}}" alt="..." style="max-width:100%;border-right: 5px solid dodgerblue">
     </div>
     <div class="col-md-8">
         <div class="card-body">

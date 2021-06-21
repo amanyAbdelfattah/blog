@@ -40,7 +40,7 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Edit User!</h1>
                             </div>
-                            <form method="POST" action="{{route('user.update' , $user->id)}}" class="user">
+                            <form method="POST" action="{{route('user.update' , $user->id)}}" class="user" enctype="multipart/form-data">
                                 <div class="row">
                                     @if (Session::has('success'))
                                     <div class="card col-12 mb-4 py-3 border-left-success">
@@ -53,6 +53,10 @@
                                 <div class="form-group row">
                                     @csrf
                                     {{method_field('PUT')}}
+                                    <div class="mb-3">
+                                        <label for="formFile" class="form-label">Upload Image</label>
+                                        <input class="form-control" type="file" id="formFile" name="image">
+                                    </div>
                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user"
                                         name="name" value="{{$user->name}}">

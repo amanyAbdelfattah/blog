@@ -38,6 +38,11 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                            
+                    </ul>
+
+
+                    <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -49,16 +54,20 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown row justify-content-end">
+                                <img src="{{asset('uploads/user/' . Auth::user()->image)}}" alt="" style="max-width: 5%"> 
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
-
+                                
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    @if (Auth::user()->admin == 1)
+                                    @if (Auth::user()->admin == 1 OR Auth::user()->admin == 2)
                                         <a href="{{route('admin-view')}}">Admin Dashboard</a>
                                     @endif
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    
+                                        
+
+                                    <a class="dropdown-item" href="{{ route('home') }}"
                                     onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -69,9 +78,12 @@
                                     </form>
                                 </div>
                             </li>
+                            
                         @endguest
                     </ul>
+
                 </div>
+                
             </div>
         </nav>
 

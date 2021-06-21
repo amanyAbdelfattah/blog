@@ -23,7 +23,6 @@ class CreatePostsTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
-       
     }
 
     /**

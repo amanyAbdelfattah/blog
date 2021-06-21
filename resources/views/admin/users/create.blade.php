@@ -1,3 +1,5 @@
+
+
 @extends('layouts.admin')
 @section('title') Create User @endsection
 @section ('content')
@@ -41,7 +43,7 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create User Account!</h1>
                             </div>
-                            <form method="POST" action="{{route('user.store')}}" class="user">
+                            <form method="POST" action="{{route('user.store')}}" class="user" enctype="multipart/form-data">
                                 <div class="row">
                                     @if (Session::has('success'))
                                     <div class="card col-12 mb-4 py-3 border-left-success">
@@ -53,6 +55,10 @@
                                 </div>
                                 <div class="form-group row">
                                     @csrf
+                                    <div class="mb-3">
+                                        <label for="formFile" class="form-label">Upload Image</label>
+                                        <input class="form-control" type="file" id="formFile" name="image">
+                                    </div>
                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user"
                                         name="name" placeholder="Username">

@@ -18,7 +18,7 @@ class CheckAdmin
     {
         //Check user if admin go to admin panel if not retuen him
         $isadmin = Auth::user()->admin;
-        if($isadmin == 1)
+        if($isadmin == 1 || $isadmin == 2)
         {
             return $next($request);
         }

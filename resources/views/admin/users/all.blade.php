@@ -22,6 +22,7 @@
     <table class="table">
         <thead>
         <tr>
+            <th scope="col">Image</th>
             <th scope="col">Username</th>
             <th scope="col">Email</th>
             <th scope="col">Address</th>
@@ -34,6 +35,7 @@
         <tbody>
             @foreach ($users as $user)
             <tr>
+                <th scope="row"><img src="{{asset('uploads/user/' . $user->image)}}" style="max-width: 100%;"></th>
                 <th scope="row">{{$user->name}}</th>
                 <td>{{$user->email}}</td>
                 <td>{{$user->address}}</td>
@@ -41,15 +43,22 @@
                 <td>{{$user->age}}</td>
                 <td>{{$user->experience}}</td>
                 <td class="d-flex">
+                    @if (Auth::user()->admin == 1)
                     <a class="btn btn-info m-1" href="{{route('user.show' , $user->id)}}">Show</a>
                     <a class="btn btn-warning m-1" href="{{route('user.edit' , $user->id)}}">Edit</a>
-                    {{-- <a class="btn btn-info m-1" href="{{route('post.show' , $user->id)}}">Posts</a> --}}
-                    {{-- <a class="btn btn-danger" href="">Delete</a> --}}
                     <form method="POST" action="{{route('user.destroy' , $user->id)}}">
                         @csrf
                         {{method_field('DELETE')}}
                         <input type="submit" class="btn btn-danger m-1" value="Delete">
-                    </form>
+                    </form>   
+                    
+                    @else
+                    <a class="btn btn-info m-1" href="{{route('user.show' , $user->id)}}">Show</a>
+                    @endif
+                    
+                    {{-- <a class="btn btn-info m-1" href="{{route('post.show' , $user->id)}}">Posts</a> --}}
+                    {{-- <a class="btn btn-danger" href="">Delete</a> --}}
+                    
                 </td>
             </tr>
             @endforeach

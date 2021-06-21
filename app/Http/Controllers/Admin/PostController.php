@@ -33,17 +33,24 @@ class PostController extends Controller
         $validator = Validator::make($request->all() , [
             'title' => ['required', 'min:4' , 'max:225'],
             'description' => ['required', 'unique:posts'],
-            'user_id' => ['required']
+            // 'user_id' => ['required']
         ]);
         if($validator->fails())
         {
             return redirect()->back()->withErrors($validator)->withInput($request->all());
         }
-        Post::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'user_id' => $request->user_id,
-        ]);
+        // $post->user_id=auth()->id();
+        $post = new Post();
+        $post->title = $request->input('title');
+        $post->description = $request->input('description');
+        $post->user_id=auth()->id();
+        $post->save();
+
+        // Post::create([
+        //     'title' => $request->title,
+        //     'description' => $request->description,
+        //     'user_id' => $request->user->id,
+        // ]);
         return redirect()->back()->with(['success' => 'Post has been added']);
     }
 

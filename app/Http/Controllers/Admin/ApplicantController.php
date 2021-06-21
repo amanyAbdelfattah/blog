@@ -43,6 +43,13 @@ class ApplicantController extends Controller
         $user->update([
             'approved' => $request->approved
         ]);
-        return redirect()->back()->with(['success' => 'User has been updated']);
+        return redirect()->back()->with(['success' => 'Applicant has been accepted']);
+    }
+    public function destroy($id)
+    {
+        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->back()->with(['success' => 'Applicant has been Rejected']);
     }
 }

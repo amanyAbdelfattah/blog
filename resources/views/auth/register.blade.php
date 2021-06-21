@@ -62,34 +62,58 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">address</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Address</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="address">
+                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
+
+                                @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">phone</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Phone Number</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="phone">
+                                <input id="phoneno" type="number" class="form-control @error('phoneno') is-invalid @enderror" name="phoneno" value="{{ old('phoneno') }}" required autocomplete="phoneno" autofocus>
+
+                                @error('phoneno')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">age</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Age</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="age">
+                                <input id="age" type="number" class="form-control @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" required autocomplete="age" autofocus>
+
+                                @error('age')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">experience</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Experience</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="experience">
+                                <input id="experience" type="number" class="form-control @error('experience') is-invalid @enderror" name="experience" value="{{ old('experience') }}" required autocomplete="experience" autofocus>
+
+                                @error('experience')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 

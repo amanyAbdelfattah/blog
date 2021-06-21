@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Admin\Service;
 
 class index extends Controller
 {
     //
     public function index()
     {
-        return view("user.index");
+        $services = Service::all();
+        return view("user.index", compact('services'));
     }
 }
