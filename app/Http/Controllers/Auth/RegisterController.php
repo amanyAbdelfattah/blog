@@ -56,7 +56,7 @@ class RegisterController extends Controller
             'address' => ['required'],
             'phoneno' => ['required'],
             'age' => ['required'],
-            'experience' => ['required'],
+            // 'experience' => ['required'],
         ]);
     }
 
@@ -75,7 +75,7 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'phoneno' => $data['phoneno'],
             'age' => $data['age'],
-            'experience' => $data['experience'],
+            // 'experience' => $data['experience'],
         ]);
     }
 }

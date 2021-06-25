@@ -41,11 +41,16 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
 	});
 });
 
-Route::get("/user" ,'User\Index@index');
-
-Route::prefix("user")->group(function(){
+Route::get("/user" ,'User\Index@index')->middleware('auth','check.user')->name('user-view');
+Route::middleware('auth','check.user')->prefix("user")->group(function(){
     Route::resource("/jobapp" , 'User\JobappController');
-});
+    Route::resource("/orderservice" , 'User\OrderServiceController');
+}); 
+
+// Route::prefix("user")->group(function(){
+//     Route::resource("/jobapp" , 'User\JobappController');
+// });
+
 Route::get('/has-one' , 'RelationsController@hasOne');
 Route::get('/has-one-reverse' , 'RelationsController@hasOneReverse');
 Route::get('/has-many-reverse' , 'RelationsController@hasManyReverse');

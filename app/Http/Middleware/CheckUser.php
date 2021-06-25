@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class CheckAdmin
+class CheckUser
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,9 @@ class CheckAdmin
      */
     public function handle($request, Closure $next)
     {
-        //Check user if admin go to admin panel if not retuen him
-        $isadmin = Auth::user()->admin;
-        if($isadmin == 1)
+        //Check user if logged in redirect him or her to index page
+        $isuser = Auth::user()->admin;
+        if($isuser == 0)
         {
             return $next($request);
         }

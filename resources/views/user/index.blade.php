@@ -8,12 +8,12 @@
 <div class="header">
     <div class="overlay"></div>
     <div class="container">
-            <div class="row justify-content-center justify-content-md-between navbar">
+            <div class="row justify-content-center justify-content-md-between navbar align-items-lg-end">
                 <span class="col-12 col-md-4 logo">Cleaning<span class="main-color">Fairy</span></span>
-                {{-- <span class="col-12 col-md-4 links">
-                    Menu
-                    <i class="fa fa-bars fa-lg" id="menu-icon"></i>
-                </span> --}}
+                <span class="col-12 col-md-4 links row justify-content-lg-around">
+                    <img src="{{asset('uploads/user/' . Auth::user()->image)}}" alt="" style="max-width: 10%">
+                    <h5 class="d-block">{{ Auth::user()->name }}</h5>
+                </span>
             </div>
             {{-- <div id="menu" class="hide menu">
                 <ul>
@@ -79,13 +79,32 @@
                     <div class="over text-center">
                         <h5 class="upper">{{$service->service_title}}</h5>
                         <p>{{$service->service_desc}}</p>
-                        <button class="upper">order service</button>
+                        <p>Price: {{$service->price}} L.E</p>
+                        <a href="{{route('orderservice.create')}}" class="upper">order service</a>
                     </div>
                 </div>
                 @endforeach
             </div>
         </div>
         <button class="upper show-more">Show More</button>
+        <div class="container">
+            <div class="items">
+                <div class="quote main-color">
+                    <i class="fas fa-quote-left"></i>
+                </div
+                {{-- @foreach ($posts as $post)
+                <div class="text">
+                    <p>"{{$post->postbody}}"</p>
+                </div>
+                <div class="pic">
+                    <img src="userinterface/img/photo-1509967419530-da38b4704bc6.jpg" alt="">
+                    <h5>{{$post->user->name}}</h5>
+                    <p>CEO OF TTCM</p>
+                </div>
+                @endforeach --}}
+                
+            </div>
+        </div>
     </div>
 </div>
 <!-- End Our Work -->

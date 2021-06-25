@@ -29,6 +29,7 @@ Route::middleware('auth','check.admin')->prefix("admin")->group(function(){
     Route::resource("/post" , 'Admin\PostController');
     Route::resource('/jobreq' , 'Admin\ApplicantController');
     Route::resource('/service' , 'Admin\ServiceController');
+    Route::resource('/order' , 'Admin\OrderController');
     Route::get('image-upload', 'Admin\ServiceController@imageUpload')->name('image.upload');
     Route::get('/user-has-many' , 'RelationsController@UserhasMany');
     Route::get('/user-has-many-reverse' , 'RelationsController@UserhasManyReverse');
