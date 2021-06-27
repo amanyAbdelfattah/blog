@@ -45,12 +45,6 @@ class PostController extends Controller
         $post->description = $request->input('description');
         $post->user_id=auth()->id();
         $post->save();
-
-        // Post::create([
-        //     'title' => $request->title,
-        //     'description' => $request->description,
-        //     'user_id' => $request->user->id,
-        // ]);
         return redirect()->back()->with(['success' => 'Post has been added']);
     }
 

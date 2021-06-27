@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Category;
 use App\Models\Admin\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -29,7 +30,8 @@ class ServiceController extends Controller
     public function create()
     {
         //
-        return view("admin.services.addservices");
+        $categories = Category::all();
+        return view("admin.services.addservices" , compact('categories'));
     }
 
     /**
@@ -53,12 +55,6 @@ class ServiceController extends Controller
         {
             return redirect()->back()->withErrors($validator)->withInput($request->all());
         }
-        // Service::create([
-        //     'image'=>$request->image,
-        //     'service_title' => $request->service_title,
-        //     'service_desc' => $request->service_desc,
-        //     'price' => $request->price
-        // ]);
         $service = new Service();
         $service->service_title = $request->input('service_title');
         $service->service_desc = $request->input('service_desc');
@@ -124,13 +120,6 @@ class ServiceController extends Controller
         {
             return redirect()->back()->withErrors($validator)->withInput($request->all());
         }
-        // $service = Service::findOrFail($id);
-        // $service->update([
-        //     'image'=>$request->image,
-        //     'service_title' => $request->service_title ,
-        //     'service_desc' => $request->service_desc,
-        //     'price'=>$request->price,
-        // ]);
         $service = Service::findOrFail($id);
         $service->image = $request->input('image');
         $service->service_title = $request->input('service_title');
@@ -150,19 +139,6 @@ class ServiceController extends Controller
             $service->image = '';
         }
         $service->update();
-
-        // if($request->hasFile('image')){
-        //     $file = $request->file('image');
-        //     $extension = $file->getClientOriginalExtension();
-        //     $filename = time() . '.' . $extension;
-        //     $file->move('uploads/service/' , $filename);
-        //     $service->image = $filename;
-        // }
-        // else{
-        //     return $request;
-        //     $service->image = '';
-        // }
-        // $service->save();
         return redirect()->back()->with(['success' => 'Service has been updated']);
     }
 

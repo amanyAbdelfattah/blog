@@ -50,17 +50,24 @@
                                 </div>
                                 <div class="form-group row">
                                     @csrf
-                                <div class="form-group row">
-                                    <div class="col-sm-12 mb-3 mb-sm-0">
-                                        <label for="">Please Choose a Suitable Date</label>
-                                        <input type="date" class="form-control form-control-user"
-                                    name="created_at">
-                                    @error('created_at')
-                                    <small class="text-danger"> {{$message}} </small>
-                                    @enderror
+                                    @foreach ($services as $service)
+                                    <input type="hidden" name="service_id" value="{{$service->id}}">
+                                    @endforeach
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <label for="">Please Choose a Suitable Date</label>
+                                            
+                                            <input type="date" class="form-control form-control-user"
+                                        name="created_at">
+                                        @error('created_at')
+                                        <small class="text-danger"> {{$message}} </small>
+                                        @enderror
+                                        </div>
+                                    
+                                    <input type="submit" value="Check Out" class="btn btn-primary btn-user btn-block">
                                     </div>
+                                    
                                 
-                                <input type="submit" value="Check Out" class="btn btn-primary btn-user btn-block">
                             </form>
                         </div>
                     </div>

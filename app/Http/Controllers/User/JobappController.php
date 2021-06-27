@@ -35,16 +35,6 @@ class JobappController extends Controller
         {
             return redirect()->back()->withErrors($validator)->withInput($request->all());
         }
-        // User::create([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'address' => $request->address,
-        //     'phoneno' => $request->phoneno,
-        //     'age' => $request->age,
-        //     'experience' => $request->experience,
-        //     'password' => $request->password,
-        //     'approved' => 1,
-        // ]);
         $user = new User();
         $user->name = $request->input('name');
         $user->email = $request->input('email');

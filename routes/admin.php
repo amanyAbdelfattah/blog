@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ApplicantController;
 use App\Http\Controllers\RelationsController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\CatController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,7 @@ Route::middleware('auth','check.admin')->prefix("admin")->group(function(){
     Route::resource("/post" , 'Admin\PostController');
     Route::resource('/jobreq' , 'Admin\ApplicantController');
     Route::resource('/service' , 'Admin\ServiceController');
+    Route::resource('/categories' , 'Admin\CatController');
     Route::resource('/order' , 'Admin\OrderController');
     Route::get('image-upload', 'Admin\ServiceController@imageUpload')->name('image.upload');
     Route::get('/user-has-many' , 'RelationsController@UserhasMany');

@@ -4,6 +4,7 @@
 
     <script src="{{URL::asset('userinterface/assets/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{URL::asset('userinterface/assets/js/jquery.js')}}"></script>
+    <script src="{{URL::asset('userinterface/assets/js/jquery.nicescroll.min.js')}}"></script>
     <script src="{{URL::asset('userinterface/assets/js/swiper.js')}}"></script>
     <script src="{{URL::asset('userinterface/assets/js/custom.js')}}"></script>
 

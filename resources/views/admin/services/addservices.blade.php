@@ -48,13 +48,14 @@
                                 <small class="text-danger"> {{$message}} </small>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user"
-                                    name="cat_id" placeholder="Service Category">
-                                    @error('cat_id')
-                                <small class="text-danger"> {{$message}} </small>
-                                    @enderror
+                                <h5>Choose Related Category</h5>
+                            <div class="checkbox"> 
+                                <div class="btn-group-vertical">
+                                    @foreach ($categories as $category)
+                                    <label for=""><input type="checkbox" name="cat_id" value="{{$category->id}}"> {{$category->cat_name}}</label>
+                                    @endforeach
                                 </div>
+                            </div>
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Upload Image</label>
                                     <input class="form-control" type="file" id="formFile" name="image">

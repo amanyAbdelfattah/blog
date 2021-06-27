@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CatController extends Controller
 {
@@ -15,6 +17,8 @@ class CatController extends Controller
     public function index()
     {
         //
+        $categories = Category::paginate(5);
+        return view('admin.categories.allcategories' , compact('categories'));
     }
 
     /**
@@ -25,6 +29,7 @@ class CatController extends Controller
     public function create()
     {
         //
+        return view("admin.categories.addcategories");
     }
 
     /**
@@ -36,6 +41,18 @@ class CatController extends Controller
     public function store(Request $request)
     {
         //
+        $validator = Validator::make($request->all() , [
+            'cat_name' => ['required', 'min:4' , 'max:225'],
+        ]);
+        // ERROR: There is no validation rule named string
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator)->withInput($request->all());
+        }
+        $category = new Category();
+        $category->cat_name = $request->input('cat_name');
+        $category->save();
+        return redirect()->back()->with(['success' => 'Category has been added']);
     }
 
     /**
@@ -58,6 +75,8 @@ class CatController extends Controller
     public function edit($id)
     {
         //
+        $category = Category::findOrFail($id);
+        return view('admin.categories.editcategories' , compact('category'));
     }
 
     /**
@@ -70,6 +89,17 @@ class CatController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validator = Validator::make($request->all(),[
+            'cat_name' => ['required', 'min:4' , 'max:225'],
+        ]);
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator)->withInput($request->all());
+        }
+        $category = Category::findOrFail($id);
+        $category->cat_name = $request->input('cat_name');
+        $category->update();
+        return redirect()->back()->with(['success' => 'Category has been updated']);
     }
 
     /**
@@ -81,5 +111,8 @@ class CatController extends Controller
     public function destroy($id)
     {
         //
+        $categories = Category::findOrFail($id);
+        $categories->delete();
+        return redirect()->back()->with(['success' => 'Category has been deleted']);
     }
 }

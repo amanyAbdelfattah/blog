@@ -58,7 +58,7 @@ input {
 /* Start Header */
 
 .header {
-    background: url('../img/slide-1.jpg');
+    background: url('../img/bkimg.jfif');
     background-size: cover;
     color: #fff;
     background-attachment: fixed;
@@ -386,7 +386,61 @@ input {
     background: #f7600e;
     color: #fff;
 }
+.shoes{
+    background-image: url(../img/photo-1485736231968-0c8ad5c9e174.jfif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 85vh;
+    width: 100%;
+}
 
+.shoes .items{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.shoes .items .quote{
+    padding: 40px 0;
+    font-size: 40px;
+}
+
+.shoes .items .text{
+    font-family: sans-serif;
+    color: white;
+    text-shadow: 2px 1px black;
+    width: 75%;
+    padding: 25px 0;
+}
+.shoes .items .postbody{
+    margin-left: -9%;
+    font-style: italic;
+    font-size: 17px;
+}
+.shoes .items .user-name
+{
+    margin-left: -3%;
+    font-size: 30px;
+}
+.shoes .items .role
+{
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 5%;
+}
+.shoes .items .pic{
+    padding: 25px 0;
+}
+
+.shoes .items .pic h5,
+.shoes .items .pic p{
+    color: white;
+    text-align: center;
+
+}
 
 /* End Our Work */
 

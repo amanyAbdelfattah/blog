@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Post;
 use App\Models\User;
-use App\User as AppUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -19,17 +17,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //SELECT * FROM users
-        //$users = User::all()
-
         $users = User::paginate(5);
         $users = DB::table('users')
         ->where('approved', '=', 0)
         ->get();
-        // $users = Post::find(1);
-        // return $users->post->title;
         return view("admin.users.all" , compact('users')); 
-        //compact is a function in PHP , This users is the same as $users 
     }
 
     /**
@@ -67,19 +59,10 @@ class UserController extends Controller
         {
             return redirect()->back()->withErrors($validator)->withInput($request->all());
         }
-        // User::create([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'password' => Hash::make($request->password),
-        //     'address'=>$request->address,
-        //     'phoneno'=>$request->phoneno,
-        //     'age'=>$request->age,
-        //     'experience'=>$request->experience
-        // ]);
         $user = new User();
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        $user->password = $request->input('password');
+        $user->password = Hash::make($request->input('password'));
         $user->address = $request->input('address');
         $user->phoneno = $request->input('phoneno');
         $user->age = $request->input('age');
@@ -168,16 +151,6 @@ class UserController extends Controller
             $user->image = '';
         }
         $user->update();
-        // $user = User::findOrFail($id);
-        // $user->update([
-        //     'name' => $request->name ,
-        //     'email' => $request->email,
-        //     'address'=>$request->address,
-        //     'phoneno'=>$request->phoneno,
-        //     'age'=>$request->age,
-        //     'experience'=>$request->experience,
-        //     'approved' => 0
-        // ]);
         return redirect()->back()->with(['success' => 'User has been updated']);
     }
 

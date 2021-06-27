@@ -40,18 +40,18 @@
 <!-- Start Feature -->
 <div class="features text-center">
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-lg-around">
             <div class="col-12 col-sm-6 col-md-3 box">
-                <i class="far fa-address-card"></i>
-                <h3 class="upper">Print Design</h3>
+                <i class="far fa-building"></i>
+                <h3 class="upper">Office Cleaning</h3>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam vitae illum odit pariatur</p>
             </div>
             <div class="col-12 col-sm-6 col-md-3 box">
-                <i class="fa fa-mobile-alt" aria-hidden="true"></i>
-                <h3 class="upper">App Design</h3>
+                <i class="fas fa-home" aria-hidden="true"></i>
+                <h3 class="upper">House Cleaning</h3>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam vitae illum odit pariatur</p>
             </div>
-            <div class="col-12 col-sm-6 col-md-3 box">
+            {{-- <div class="col-12 col-sm-6 col-md-3 box">
                 <i class="far fa-file-archive"></i>
                 <h3 class="upper">Photography</h3>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam vitae illum odit pariatur</p>
@@ -60,7 +60,7 @@
                 <i class="fas fa-brush"></i>
                 <h3 class="upper">Graphic Design</h3>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam vitae illum odit pariatur</p>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
@@ -75,6 +75,7 @@
             <div class="row no-gutters">
                 @foreach ($services as $service)
                 <div class="col-12 col-sm-6 col-md-4 item">
+                    {{-- <input type="hidden" name="service_id" value="{{$service->id}}"> --}}
                     <img src={{asset('uploads/service/' . $service->image)}} alt="">
                     <div class="over text-center">
                         <h5 class="upper">{{$service->service_title}}</h5>
@@ -87,24 +88,81 @@
             </div>
         </div>
         <button class="upper show-more">Show More</button>
-        <div class="container">
+        <div class="swiper-container mySwiper">
+            <div class="swiper-wrapper" style="transform: translate3d(0px, 94px, 0px)">
+                
+                @foreach ($feedbacks as $feedback)
+                <div class="swiper-slide customerposts" style="transform: translate3d(43%, 27%, 0px);">
+                    <p class="text postbody">" {{$feedback->title}} "</p>
+                    <img src="{{asset('uploads/user/' . $feedback->user->image)}}" style="max-width: 15%">
+                    <h3 class="text user-name">{{$feedback->user->name}}</h3>
+                </div>
+                @endforeach
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+        {{-- <div class="container">
             <div class="items">
                 <div class="quote main-color">
                     <i class="fas fa-quote-left"></i>
-                </div
-                {{-- @foreach ($posts as $post)
+                </div>
+                @foreach ($feedbacks as $feedback)
                 <div class="text">
-                    <p>"{{$post->postbody}}"</p>
+                    <p>"{{$feedback->title}}"</p>
+                    <p>"{{$feedback->description}}"</p>
                 </div>
                 <div class="pic">
                     <img src="userinterface/img/photo-1509967419530-da38b4704bc6.jpg" alt="">
-                    <h5>{{$post->user->name}}</h5>
+                    <h5>{{$feedback->user->name}}</h5>
                     <p>CEO OF TTCM</p>
                 </div>
-                @endforeach --}}
+                @endforeach
                 
             </div>
-        </div>
+        </div> --}}
+        {{-- <div id="demo" class="carousel slide" data-ride="carousel">
+            <ul class="carousel-indicators">
+              <li data-target="#demo" data-slide-to="0" class="active"></li>
+              <li data-target="#demo" data-slide-to="1"></li>
+              <li data-target="#demo" data-slide-to="2"></li>
+            </ul>
+            
+            <div class="carousel-inner">
+                @foreach ($feedbacks as $feedback)
+                  <div class="carousel-item">
+                    <img src="{{asset('uploads/user/' . $feedback->user->image)}}" alt="Chicago" width="20%" height="20%">
+                    <div class="carousel-caption">
+                      <h3>{{$feedback->title}}</h3>
+                      <p>{{$feedback->description}}</p>
+                    </div>   
+                  </div>
+                  @endforeach
+              
+              {{-- <div class="carousel-item">
+                <img src="{{URL::asset('userinterface/assets/img/slide-1.jpg')}}" alt="Chicago" width="100%" height="100%">
+                <div class="carousel-caption">
+                  <h3>Chicago</h3>
+                  <p>Thank you, Chicago!</p>
+                </div>   
+              </div>
+              <div class="carousel-item">
+                <img src="{{URL::asset('userinterface/assets/img/slide-1.jpg')}}" alt="New York" width="100%" height="100%">
+                <div class="carousel-caption">
+                  <h3>New York</h3>
+                  <p>We love the Big Apple!</p>
+                </div>   
+              </div>
+            </div>
+            
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </a>
+          </div> --}}
+          
     </div>
 </div>
 <!-- End Our Work -->

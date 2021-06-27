@@ -12,7 +12,8 @@ class OrderServiceController extends Controller
     public function create()
     {
         //
-        return view('user.orders.makeorders');
+        $services = Service::all();
+        return view('user.orders.makeorders' , compact('services'));
     }
 
     public function store(Request $request)
@@ -21,7 +22,8 @@ class OrderServiceController extends Controller
         $service = new Service();
         $order = Order::create([
             'user_id' => Auth()->user() ? Auth()->user()->id : null,
-            'service_id' => $service->id,
+            'service_id' => $request->input('service_id')
+            // 'service_id' => $service->id,
         ]);
         return redirect()->back()->with(['success' => 'Your Order had been submitted']);
     }
