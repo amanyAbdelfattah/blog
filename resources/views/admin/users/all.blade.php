@@ -62,12 +62,10 @@
                 </td>
             </tr>
             @endforeach
-        
+            
         </tbody>
     </table>
-    {{-- <div class="container">
-        {{$users->links()}}
-    </div> --}}
+
     
 </div>
 @endsection

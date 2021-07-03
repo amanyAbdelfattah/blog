@@ -10,6 +10,17 @@
     <div class="container">
             <div class="row justify-content-center justify-content-md-between navbar align-items-lg-end">
                 <span class="col-12 col-md-4 logo">Cleaning<span class="main-color">Fairy</span></span>
+
+                {{-- <ul>
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <li>
+                            <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                {{ $properties['native'] }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul> --}}
+                
                 <span class="col-12 col-md-4 links row justify-content-lg-around">
                     <img src="{{asset('uploads/user/' . Auth::user()->image)}}" alt="" style="max-width: 10%">
                     <h5 class="d-block">{{ Auth::user()->name }}</h5>
@@ -24,7 +35,7 @@
                 </ul>
                 </div> --}}
         <div class="intro text-center">
-            <h1 class="upper">We Design <span class="main-color">Things</span></h1>
+            <h1 class="upper">{{__('UserIndex.WE DESIGN')}} <span class="main-color">{{__('UserIndex.THINGS')}}</span></h1>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio aut ducimus rem hic laboriosam aperiam quod saepe. Ex, quasi nulla. Lorem ipsum dolor sit amet. dolor sit amet consectetur adipisicing elit. Assumenda ullam quasi eos corporisdebitisvoluptates.
             </p>
             <div class="a">
@@ -51,16 +62,6 @@
                 <h3 class="upper">House Cleaning</h3>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam vitae illum odit pariatur</p>
             </div>
-            {{-- <div class="col-12 col-sm-6 col-md-3 box">
-                <i class="far fa-file-archive"></i>
-                <h3 class="upper">Photography</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam vitae illum odit pariatur</p>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 box">
-                <i class="fas fa-brush"></i>
-                <h3 class="upper">Graphic Design</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam vitae illum odit pariatur</p>
-            </div> --}}
         </div>
     </div>
 </div>
@@ -76,94 +77,90 @@
                 @foreach ($services as $service)
                 <div class="col-12 col-sm-6 col-md-4 item">
                     {{-- <input type="hidden" name="service_id" value="{{$service->id}}"> --}}
-                    <img src={{asset('uploads/service/' . $service->image)}} alt="">
+                    <img src="{{asset('uploads/service/' . $service->image)}}" alt="">
                     <div class="over text-center">
                         <h5 class="upper">{{$service->service_title}}</h5>
                         <p>{{$service->service_desc}}</p>
                         <p>Price: {{$service->price}} L.E</p>
-                        <a href="{{route('orderservice.create')}}" class="upper">order service</a>
+                        <a href="{{route('orderservice.create')}}" class="upper show-more order-service">order service</a>
                     </div>
                 </div>
                 @endforeach
             </div>
         </div>
         <button class="upper show-more">Show More</button>
-        <div class="swiper-container mySwiper">
-            <div class="swiper-wrapper" style="transform: translate3d(0px, 94px, 0px)">
-                
-                @foreach ($feedbacks as $feedback)
-                <div class="swiper-slide customerposts" style="transform: translate3d(43%, 27%, 0px);">
-                    <p class="text postbody">" {{$feedback->title}} "</p>
-                    <img src="{{asset('uploads/user/' . $feedback->user->image)}}" style="max-width: 15%">
-                    <h3 class="text user-name">{{$feedback->user->name}}</h3>
-                </div>
-                @endforeach
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-        {{-- <div class="container">
-            <div class="items">
-                <div class="quote main-color">
-                    <i class="fas fa-quote-left"></i>
-                </div>
-                @foreach ($feedbacks as $feedback)
-                <div class="text">
-                    <p>"{{$feedback->title}}"</p>
-                    <p>"{{$feedback->description}}"</p>
-                </div>
-                <div class="pic">
-                    <img src="userinterface/img/photo-1509967419530-da38b4704bc6.jpg" alt="">
-                    <h5>{{$feedback->user->name}}</h5>
-                    <p>CEO OF TTCM</p>
-                </div>
-                @endforeach
-                
-            </div>
-        </div> --}}
-        {{-- <div id="demo" class="carousel slide" data-ride="carousel">
-            <ul class="carousel-indicators">
-              <li data-target="#demo" data-slide-to="0" class="active"></li>
-              <li data-target="#demo" data-slide-to="1"></li>
-              <li data-target="#demo" data-slide-to="2"></li>
-            </ul>
-            
-            <div class="carousel-inner">
-                @foreach ($feedbacks as $feedback)
-                  <div class="carousel-item">
-                    <img src="{{asset('uploads/user/' . $feedback->user->image)}}" alt="Chicago" width="20%" height="20%">
-                    <div class="carousel-caption">
-                      <h3>{{$feedback->title}}</h3>
-                      <p>{{$feedback->description}}</p>
-                    </div>   
-                  </div>
-                  @endforeach
-              
-              {{-- <div class="carousel-item">
-                <img src="{{URL::asset('userinterface/assets/img/slide-1.jpg')}}" alt="Chicago" width="100%" height="100%">
-                <div class="carousel-caption">
-                  <h3>Chicago</h3>
-                  <p>Thank you, Chicago!</p>
-                </div>   
-              </div>
-              <div class="carousel-item">
-                <img src="{{URL::asset('userinterface/assets/img/slide-1.jpg')}}" alt="New York" width="100%" height="100%">
-                <div class="carousel-caption">
-                  <h3>New York</h3>
-                  <p>We love the Big Apple!</p>
-                </div>   
-              </div>
-            </div>
-            
-            <a class="carousel-control-prev" href="#demo" data-slide="prev">
-              <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#demo" data-slide="next">
-              <span class="carousel-control-next-icon"></span>
-            </a>
-          </div> --}}
-          
+        
     </div>
+
+</div>
+
+
+<!-- Main Body -->
+<div class="comment-container">
+    <h2 class="upper">Our <span class="main-color">Customers Say</span></h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br> Quos voluptas sapiente quas natus illo, quis quaerat quae porro laudantium fugit?</p>
+    <section class="comment-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5 col-md-6 col-12 pb-4">
+                    <h1>Comments</h1>
+                    @foreach ($feedbacks as $feedback)
+                    <div class="comment mt-4 text-justify float-left"> <img src="{{asset('uploads/user/' . $feedback->user->image)}}" alt="" class="rounded-circle" width="40" height="40">
+                        <h4>{{$feedback->user->name}}</h4> <span>- 20 October, 2018</span> <br>
+                        <h5 class="mt-2">{{$feedback->title}}</h5>
+                        <p>{{$feedback->description}}</p>
+                    </div>
+                    @endforeach
+                </div>
+                <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
+                    <form id="algin-form" method="POST" action="{{route('feedback.store')}}" class="user my-3 opinion">
+                        @csrf
+                        <div class="row">
+                        <div class="form-group">
+                            <h4>Leave a comment</h4> 
+                            <div class="form-group"> <label for="name">Title</label> <input type="text" name="title" id="fullname" class="form-control"> </div>
+                            <label for="message">Message</label> <textarea name="description" id="" msg cols="30" rows="5" class="form-control" style="background-color: black;"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <p class="text-secondary">If you have a <a href="#" class="alert-link">gravatar account</a> your address will be used to display your profile picture.</p>
+                        </div>
+                        <div class="form-inline"> <input type="checkbox" name="check" id="checkbx" class="mr-1"> <label for="subscribe">Subscribe me to the newlettter</label> </div>
+                        <div class="form-group"> <input type="submit" id="post" class="btn" value="Post Comment"> </div>
+                    </form>
+                </div>
+            </div>
+            <div class="container">
+                {{$feedbacks->links()}}
+            </div>
+        </div>
+    </section>
 </div>
 <!-- End Our Work -->
+
+<!-- Start Our Team -->
+<div class="our-team text-center">
+    <div class="container">
+        <h2 class="upper">Our <span class="main-color">Team</span></h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br />Quae quasi magni quaerat, quam repudiandae amet.</p>
+        <div class="team row justify-content-center">
+            @foreach ($users as $user)
+                @if ($user->admin == 1)
+                <div class="person col-12 col-sm-6 col-md-3">
+                    <img src="{{asset('uploads/user/' . $user->image)}}" alt="Team Member">
+                    <h4 class="upper">{{$user->name}}</h4>
+                    <div class="social-media">
+                        <i class="fab fa-facebook" aria-hidden="true"></i>
+                        <i class="fab fa-twitter" aria-hidden="true"></i>
+                        <i class="fab fa-youtube" aria-hidden="true"></i>
+                        <i class="fab fa-google" aria-hidden="true"></i>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod maiores voluptas beatae reiciendis accusantium expedita.</p>
+                </div>
+                @endif
+            @endforeach
+        </div>
+    </div>
+</div>
+<!-- End Our Team -->
+
     @endsection

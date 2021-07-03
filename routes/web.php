@@ -35,17 +35,35 @@ Route::get('/', function () {
 // {
 //     return "Hello From Category page";
 // });
-Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]],function(){
-    Route::get('test',function(){
-		return view('admin.dashboard');
-	});
-});
 
-Route::get("/user" ,'User\Index@index')->middleware('auth','check.user')->name('user-view');
-Route::middleware('auth','check.user')->prefix("user")->group(function(){
-    Route::resource("/jobapp" , 'User\JobappController');
-    Route::resource("/orderservice" , 'User\OrderServiceController');
-}); 
+
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){ 
+        Route::get("/user" ,'User\Index@index')->middleware('auth','check.user')->name('user-view');
+        Route::middleware('auth','check.user')->prefix("user")->group(function(){
+            Route::resource("/jobapp" , 'User\JobappController');
+            Route::resource("/orderservice" , 'User\OrderServiceController');
+            Route::resource("/feedback" , 'User\FeedbackController');
+        }); 
+    });
+
+
+
+// Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]],function(){
+//     Route::get('test',function(){
+// 		return view('admin.dashboard');
+// 	});
+// });
+
+// Route::get("/user" ,'User\Index@index')->middleware('auth','check.user')->name('user-view');
+// Route::middleware('auth','check.user')->prefix("user")->group(function(){
+//     Route::resource("/jobapp" , 'User\JobappController');
+//     Route::resource("/orderservice" , 'User\OrderServiceController');
+//     Route::resource("/feedback" , 'User\FeedbackController');
+// }); 
 
 // Route::prefix("user")->group(function(){
 //     Route::resource("/jobapp" , 'User\JobappController');

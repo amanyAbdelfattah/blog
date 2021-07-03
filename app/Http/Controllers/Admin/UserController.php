@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(5);
+        $users = User::all();
         $users = DB::table('users')
         ->where('approved', '=', 0)
         ->get();

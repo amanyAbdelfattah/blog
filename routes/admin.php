@@ -8,7 +8,9 @@ use App\Http\Controllers\Admin\ApplicantController;
 use App\Http\Controllers\RelationsController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\CatController;
+use Facade\FlareClient\View;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,19 +22,44 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get("/admin" , "Admin\DashboardController@index")->middleware('auth','check.admin')->name('admin-view');
+// routes/web.php
 
-// -----Admin Pannel-----
-Route::middleware('auth','check.admin')->prefix("admin")->group(function(){
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){ 
+        Route::get("/admin" , "Admin\DashboardController@index")->middleware('auth','check.admin')->name('admin-view');
+        Route::middleware('auth','check.admin')->prefix("admin")->group(function(){
 
-    // Route::post('accept/{id}', 'Admin\UserController@approve');
-    Route::resource("/user" , 'Admin\UserController');
-    Route::resource("/post" , 'Admin\PostController');
-    Route::resource('/jobreq' , 'Admin\ApplicantController');
-    Route::resource('/service' , 'Admin\ServiceController');
-    Route::resource('/categories' , 'Admin\CatController');
-    Route::resource('/order' , 'Admin\OrderController');
-    Route::get('image-upload', 'Admin\ServiceController@imageUpload')->name('image.upload');
-    Route::get('/user-has-many' , 'RelationsController@UserhasMany');
-    Route::get('/user-has-many-reverse' , 'RelationsController@UserhasManyReverse');
-});
+            // Route::post('accept/{id}', 'Admin\UserController@approve');
+            Route::resource("/user" , 'Admin\UserController');
+            Route::resource("/post" , 'Admin\PostController');
+            Route::resource('/jobreq' , 'Admin\ApplicantController');
+            Route::resource('/service' , 'Admin\ServiceController');
+            Route::resource('/categories' , 'Admin\CatController');
+            Route::resource('/order' , 'Admin\OrderController');
+            Route::get('image-upload', 'Admin\ServiceController@imageUpload')->name('image.upload');
+            Route::get('/user-has-many' , 'RelationsController@UserhasMany');
+            Route::get('/user-has-many-reverse' , 'RelationsController@UserhasManyReverse');
+        });
+    });
+/** OTHER PAGES THAT SHOULD NOT BE LOCALIZED **/
+
+
+// Route::get("/admin" , "Admin\DashboardController@index")->middleware('auth','check.admin')->name('admin-view');
+
+// // -----Admin Pannel-----
+// Route::middleware('auth','check.admin')->prefix("admin")->group(function(){
+
+//     // Route::post('accept/{id}', 'Admin\UserController@approve');
+//     Route::resource("/user" , 'Admin\UserController');
+//     Route::resource("/post" , 'Admin\PostController');
+//     Route::resource('/jobreq' , 'Admin\ApplicantController');
+//     Route::resource('/service' , 'Admin\ServiceController');
+//     Route::resource('/categories' , 'Admin\CatController');
+//     Route::resource('/order' , 'Admin\OrderController');
+//     Route::get('image-upload', 'Admin\ServiceController@imageUpload')->name('image.upload');
+//     Route::get('/user-has-many' , 'RelationsController@UserhasMany');
+//     Route::get('/user-has-many-reverse' , 'RelationsController@UserhasManyReverse');
+// });

@@ -40,6 +40,8 @@
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
+                            
+                            
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                                 aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
@@ -208,7 +210,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">{{__('Title')}}</h1>
+                        <h1 class="h3 mb-0 text-gray-800">{{__('Dashboardsidebar.Dashboard')}}</h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
@@ -258,6 +260,15 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
+                                            {{-- <ul>
+                                                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                                    <li>
+                                                        <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                                            {{ $properties['native'] }}
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul> --}}
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Categories
                                             </div>
                                             <div class="row no-gutters align-items-center">

@@ -5,7 +5,6 @@
     
     @yield('content')
 
-@include('user.includes.ourteam')
 @include('user.includes.footer')
 @include('user.includes.mainscripts')
 </body>

@@ -20,7 +20,7 @@
         </div>
         @endif
     </div>
-    <div class="card" style="width: 18rem;">
+    {{-- <div class="card" style="width: 18rem;">
         @foreach ($services as $service)
         <img src={{asset('uploads/service/' . $service->image)}} class="card-img-top">
         <div class="card-body">
@@ -37,8 +37,8 @@
             </form>
         </div>
         @endforeach
-    </div>
-    {{-- <table class="table">
+    </div> --}}
+    <table class="table">
         <thead>
         <tr>
             <th scope="col">Service Image</th>
@@ -62,7 +62,7 @@
                     <a class="btn btn-warning m-1" href="{{route('service.edit' , $service->id)}}">Edit</a>
                     {{-- <a class="btn btn-info m-1" href="{{route('post.show' , $user->id)}}">Posts</a> --}}
                     {{-- <a class="btn btn-danger" href="">Delete</a> --}} 
-                    {{-- <form method="POST" action="{{route('service.destroy' , $service->id)}}">
+                    <form method="POST" action="{{route('service.destroy' , $service->id)}}">
                         @csrf
                         {{method_field('DELETE')}}
                         <input type="submit" class="btn btn-danger m-1" value="Delete">
@@ -72,7 +72,7 @@
             @endforeach
         
         </tbody>
-    </table> --}}
+    </table>
     <div class="container">
         {{$services->links()}}
     </div>

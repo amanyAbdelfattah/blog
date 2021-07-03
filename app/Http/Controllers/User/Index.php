@@ -13,7 +13,8 @@ class index extends Controller
     public function index()
     {
         $services = Service::all();
-        $feedbacks = Post::all();
-        return view("user.index", compact('services' , 'feedbacks'));
+        $users = User::all();
+        $feedbacks = Post::paginate(3);
+        return view("user.index", compact('services', 'users' ,'feedbacks'));
     }
 }
