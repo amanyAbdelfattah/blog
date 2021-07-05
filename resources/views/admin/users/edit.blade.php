@@ -38,7 +38,7 @@
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Edit User!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">{{__('Dashboard.EditUser')}}!</h1>
                             </div>
                             <form method="POST" action="{{route('user.update' , $user->id)}}" class="user" enctype="multipart/form-data">
                                 <div class="row">
@@ -54,7 +54,7 @@
                                     @csrf
                                     {{method_field('PUT')}}
                                     <div class="mb-3">
-                                        <label for="formFile" class="form-label">Upload Image</label>
+                                        <label for="formFile" class="form-label">{{__('UserIndex.UploadImage')}}</label>
                                         <input class="form-control" type="file" id="formFile" name="image">
                                     </div>
                                     <div class="col-sm-12 mb-3 mb-sm-0">
@@ -109,7 +109,7 @@
                                 <small class="text-danger"> {{$message}} </small>
                                     @enderror
                                 </div>
-                                <input type="submit" value="Update Account" class="btn btn-primary btn-user btn-block">
+                                <input type="submit" value="{{__('Dashboard.UpdateAccount')}}" class="btn btn-primary btn-user btn-block">
                             </form>
                         </div>
                     </div>

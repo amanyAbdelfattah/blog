@@ -6,9 +6,9 @@
         <div class="col-lg-12">
             <div class="p-5">
                 <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">All Users</h1>
+                    <h1 class="h4 text-gray-900 mb-4">{{__('Dashboard.AllUsers')}}</h1>
                 </div>
-                <a class="btn btn-primary" href="{{route('user.create')}}">Add User</a>
+                <a class="btn btn-primary" href="{{route('user.create')}}">{{__('Dashboard.AddUser')}}</a>
             </div>
     <div class="row">
         @if (Session::has('success'))
@@ -22,14 +22,14 @@
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">Image</th>
-            <th scope="col">Username</th>
-            <th scope="col">Email</th>
-            <th scope="col">Address</th>
-            <th scope="col">Phone Number</th>
-            <th scope="col">Age</th>
-            <th scope="col">Experience</th>
-            <th scope="col">Control</th>
+            <th scope="col">{{__('Dashboard.Image')}}</th>
+            <th scope="col">{{__('UserIndex.Username')}}</th>
+            <th scope="col">{{__('UserIndex.Email')}}</th>
+            <th scope="col">{{__('UserIndex.Address')}}</th>
+            <th scope="col">{{__('UserIndex.Phone')}}</th>
+            <th scope="col">{{__('UserIndex.Age')}}</th>
+            <th scope="col">{{__('UserIndex.YEARS')}}</th>
+            <th scope="col">{{__('Dashboard.Control')}}</th>
         </tr>
         </thead>
         <tbody>
@@ -43,21 +43,13 @@
                 <td>{{$user->age}}</td>
                 <td>{{$user->experience}}</td>
                 <td class="d-flex">
-                    @if (Auth::user()->admin == 1)
-                    <a class="btn btn-info m-1" href="{{route('user.show' , $user->id)}}">Show</a>
-                    <a class="btn btn-warning m-1" href="{{route('user.edit' , $user->id)}}">Edit</a>
+                    <a class="btn btn-info m-1" href="{{route('user.show' , $user->id)}}">{{__('Dashboard.Show')}}</a>
+                    <a class="btn btn-warning m-1" href="{{route('user.edit' , $user->id)}}">{{__('Dashboard.Edit')}}</a>
                     <form method="POST" action="{{route('user.destroy' , $user->id)}}">
                         @csrf
                         {{method_field('DELETE')}}
-                        <input type="submit" class="btn btn-danger m-1" value="Delete">
+                        <input type="submit" class="btn btn-danger m-1" value="{{__('Dashboard.Delete')}}">
                     </form>   
-                    
-                    @else
-                    <a class="btn btn-info m-1" href="{{route('user.show' , $user->id)}}">Show</a>
-                    @endif
-                    
-                    {{-- <a class="btn btn-info m-1" href="{{route('post.show' , $user->id)}}">Posts</a> --}}
-                    {{-- <a class="btn btn-danger" href="">Delete</a> --}}
                     
                 </td>
             </tr>

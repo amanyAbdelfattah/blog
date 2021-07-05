@@ -10,37 +10,28 @@
     <div class="container">
             <div class="row justify-content-center justify-content-md-between navbar align-items-lg-end">
                 <span class="col-12 col-md-4 logo">Cleaning<span class="main-color">Fairy</span></span>
-
-                {{-- <ul>
+                <ul style="width: 20%; list-style:none">
                     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                         <li>
-                            <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                            <a style="text-decoration:none; color:white" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                                 {{ $properties['native'] }}
                             </a>
                         </li>
                     @endforeach
-                </ul> --}}
+                </ul>
                 
                 <span class="col-12 col-md-4 links row justify-content-lg-around">
-                    <img src="{{asset('uploads/user/' . Auth::user()->image)}}" alt="" style="max-width: 10%">
-                    <h5 class="d-block">{{ Auth::user()->name }}</h5>
+                    <img src="{{asset('uploads/user/' . Auth::user()->image)}}" alt="" style="max-width: 13%">
+                    <h5 class="d-block"> <a href="{{route('profile.show', Auth::user()->id)}}" style="color: white; text-decoration: none;">{{ Auth::user()->name }}</a></h5>
                 </span>
             </div>
-            {{-- <div id="menu" class="hide menu">
-                <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Services</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Contact Us</a></li>
-                </ul>
-                </div> --}}
         <div class="intro text-center">
-            <h1 class="upper">{{__('UserIndex.WE DESIGN')}} <span class="main-color">{{__('UserIndex.THINGS')}}</span></h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio aut ducimus rem hic laboriosam aperiam quod saepe. Ex, quasi nulla. Lorem ipsum dolor sit amet. dolor sit amet consectetur adipisicing elit. Assumenda ullam quasi eos corporisdebitisvoluptates.
+            <h1 class="upper">{{__('UserIndex.HAPPINESS')}} <span class="main-color">{{__('UserIndex.CleanedHouse')}}</span></h1>
+            <p>{{__('UserIndex.QOUTE')}}
             </p>
             <div class="a">
-                <a class="upper" href="{{ URL::to('user/jobapp') }}">Hire Us</a>
-                <a class="upper" href="#ourworks">Our Works</a>
+                <a class="upper" href="{{ URL::to('user/jobapp') }}">{{__('UserIndex.HIRE')}}</a>
+                <a class="upper" href="#ourworks">{{__('UserIndex.WORK')}}</a>
             </div>
         </div>
     </div>
@@ -54,13 +45,13 @@
         <div class="row justify-content-lg-around">
             <div class="col-12 col-sm-6 col-md-3 box">
                 <i class="far fa-building"></i>
-                <h3 class="upper">Office Cleaning</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam vitae illum odit pariatur</p>
+                <h3 class="upper">{{__('UserIndex.OFFICE')}}</h3>
+                <p>{{__('UserIndex.OFFICEtext')}}</p>
             </div>
             <div class="col-12 col-sm-6 col-md-3 box">
                 <i class="fas fa-home" aria-hidden="true"></i>
-                <h3 class="upper">House Cleaning</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam vitae illum odit pariatur</p>
+                <h3 class="upper">{{__('UserIndex.HOUSE')}}</h3>
+                <p>{{__('UserIndex.HOUSEtext')}}</p>
             </div>
         </div>
     </div>
@@ -71,8 +62,8 @@
 <div class="our-work text-center" id="ourworks">
     <div class="container">
         <div>
-            <h2 class="upper">Our <span class="main-color">Work</span></h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br> Quos voluptas sapiente quas natus illo, quis quaerat quae porro laudantium fugit?</p>
+            <h2 class="upper">{{__('UserIndex.OUR')}} <span class="main-color">{{__('UserIndex.Work')}}</span></h2>
+            <p>{{__('UserIndex.OFFERYOU')}}<br> {{__('UserIndex.SERVICES')}}</p>
             <div class="row no-gutters">
                 @foreach ($services as $service)
                 <div class="col-12 col-sm-6 col-md-4 item">
@@ -82,13 +73,13 @@
                         <h5 class="upper">{{$service->service_title}}</h5>
                         <p>{{$service->service_desc}}</p>
                         <p>Price: {{$service->price}} L.E</p>
-                        <a href="{{route('orderservice.create')}}" class="upper show-more order-service">order service</a>
+                        <a href="{{route('orderservice.create')}}" class="upper show-more order-service">{{__('UserIndex.OrderService')}}</a>
                     </div>
                 </div>
                 @endforeach
             </div>
         </div>
-        <button class="upper show-more">Show More</button>
+        <button class="upper show-more">{{__('UserIndex.ShowMore')}}</button>
         
     </div>
 
@@ -97,13 +88,13 @@
 
 <!-- Main Body -->
 <div class="comment-container">
-    <h2 class="upper">Our <span class="main-color">Customers Say</span></h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br> Quos voluptas sapiente quas natus illo, quis quaerat quae porro laudantium fugit?</p>
+    <h2 class="upper">{{__('UserIndex.OURCUSTOMERS')}} <span class="main-color">{{__('UserIndex.SAY')}}</span></h2>
+    <p>{{__('UserIndex.CustomersFeedback')}}</p>
     <section class="comment-section">
         <div class="container">
             <div class="row">
                 <div class="col-sm-5 col-md-6 col-12 pb-4">
-                    <h1>Comments</h1>
+                    <h1>{{__('UserIndex.COMMENTS')}}</h1>
                     @foreach ($feedbacks as $feedback)
                     <div class="comment mt-4 text-justify float-left"> <img src="{{asset('uploads/user/' . $feedback->user->image)}}" alt="" class="rounded-circle" width="40" height="40">
                         <h4>{{$feedback->user->name}}</h4> <span>- 20 October, 2018</span> <br>
@@ -117,15 +108,11 @@
                         @csrf
                         <div class="row">
                         <div class="form-group">
-                            <h4>Leave a comment</h4> 
-                            <div class="form-group"> <label for="name">Title</label> <input type="text" name="title" id="fullname" class="form-control"> </div>
-                            <label for="message">Message</label> <textarea name="description" id="" msg cols="30" rows="5" class="form-control" style="background-color: black;"></textarea>
+                            <h4>{{__('UserIndex.LEAVECOMMENT')}}</h4> 
+                            <div class="form-group"> <label for="name">{{__('UserIndex.TITLE')}}</label> <input type="text" name="title" id="fullname" class="form-control"> </div>
+                            <label for="message">{{__('UserIndex.Message')}}</label> <textarea name="description" id="" msg cols="30" rows="5" class="form-control" style="background-color: black;"></textarea>
                         </div>
-                        <div class="form-group">
-                            <p class="text-secondary">If you have a <a href="#" class="alert-link">gravatar account</a> your address will be used to display your profile picture.</p>
-                        </div>
-                        <div class="form-inline"> <input type="checkbox" name="check" id="checkbx" class="mr-1"> <label for="subscribe">Subscribe me to the newlettter</label> </div>
-                        <div class="form-group"> <input type="submit" id="post" class="btn" value="Post Comment"> </div>
+                        <div class="form-group"> <input type="submit" id="post" class="btn" value="{{__('UserIndex.POST')}}"> </div>
                     </form>
                 </div>
             </div>
@@ -140,8 +127,8 @@
 <!-- Start Our Team -->
 <div class="our-team text-center">
     <div class="container">
-        <h2 class="upper">Our <span class="main-color">Team</span></h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br />Quae quasi magni quaerat, quam repudiandae amet.</p>
+        <h2 class="upper">{{__('UserIndex.OUR')}} <span class="main-color">{{__('UserIndex.Team')}}</span></h2>
+        <p>{{__("UserIndex.FIRSTIMP")}}<br />{{__("UserIndex.SECONDIMP")}}</p>
         <div class="team row justify-content-center">
             @foreach ($users as $user)
                 @if ($user->admin == 1)
@@ -154,7 +141,7 @@
                         <i class="fab fa-youtube" aria-hidden="true"></i>
                         <i class="fab fa-google" aria-hidden="true"></i>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod maiores voluptas beatae reiciendis accusantium expedita.</p>
+                    <p>{{__('UserIndex.TEAMINFO')}}</p>
                 </div>
                 @endif
             @endforeach

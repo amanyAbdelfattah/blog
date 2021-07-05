@@ -38,7 +38,7 @@
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Edit Post!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">{{__('Dashboard.EditPost')}}!</h1>
                             </div>
                             <form method="POST" action="{{route('post.update' , $post->id)}}" class="user">
                                 <div class="row">
@@ -68,7 +68,7 @@
                                 <small class="text-danger"> {{$message}} </small>
                                     @enderror
                                 </div>
-                                <input type="submit" value="Update Post" class="btn btn-primary btn-user btn-block">
+                                <input type="submit" value="{{__('Dashboard.UpdatePost')}}" class="btn btn-primary btn-user btn-block">
                             </form>
                         </div>
                     </div>

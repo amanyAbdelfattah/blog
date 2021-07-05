@@ -39,7 +39,7 @@
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Please enter your information!</h1>
+                                <h1 class="h4 text-gray-900 mb-4" style="color:black;">{{__('UserIndex.JobForm')}}</h1>
                             </div>
                             <form method="POST" action="{{route('jobapp.store')}}" class="user" enctype="multipart/form-data">
                                 <div class="row">
@@ -54,12 +54,12 @@
                                 <div class="form-group row">
                                     @csrf
                                     <div class="mb-3">
-                                        <label for="formFile" class="form-label">Upload Image</label>
+                                        <label for="formFile" class="form-label">{{__('UserIndex.UploadImage')}}</label>
                                         <input class="form-control" type="file" id="formFile" name="image">
                                     </div>
                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user"
-                                        name="name" placeholder="Username">
+                                        name="name" value="{{__('UserIndex.Username')}}">
                                         @error('name')
                                         <small class="text-danger"> {{$message}} </small> 
                                         @enderror
@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user"
-                                    name="email" placeholder="Email Address">
+                                    name="email" value="{{__('UserIndex.Email')}}">
                                     @error('email')
                                 <small class="text-danger"> {{$message}} </small>
                                     @enderror
@@ -75,7 +75,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user"
-                                    name="password" placeholder="Password">
+                                    name="password" value="{{__('UserIndex.PASS')}}">
                                     @error('password')
                                     <small class="text-danger"> {{$message}} </small>
                                     @enderror
@@ -84,41 +84,75 @@
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user"
-                                    name="address" placeholder="Address">
+                                    name="address" value="{{__('UserIndex.Address')}}">
                                     @error('address')
                                     <small class="text-danger"> {{$message}} </small>
                                     @enderror
                                     </div>
                                 </div>
+
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                        <input type="number" class="form-control form-control-user"
-                                    name="phoneno" placeholder="Phone Number">
+                                        <input type="text" class="form-control form-control-user"
+                                    name="phoneno" value="{{__('UserIndex.Phone')}}">
                                     @error('phoneno')
                                     <small class="text-danger"> {{$message}} </small>
                                     @enderror
                                     </div>
                                 </div>
-                                <div class="form-group row">
+
+                                {{-- <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                         <input type="number" class="form-control form-control-user"
-                                    name="age" placeholder="Age">
+                                    name="phoneno" value="{{__('UserIndex.Phone')}}">
+                                    @error('phoneno')
+                                    <small class="text-danger"> {{$message}} </small>
+                                    @enderror
+                                    </div>
+                                </div> --}}
+
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user"
+                                    name="age" value="{{__('UserIndex.Age')}}">
                                     @error('age')
                                     <small class="text-danger"> {{$message}} </small>
                                     @enderror
                                     </div>
                                 </div>
-                                <div class="form-group row">
+
+                                {{-- <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                         <input type="number" class="form-control form-control-user"
-                                    name="experience" placeholder="Years of Experience">
+                                    name="age" value="{{__('UserIndex.Age')}}">
+                                    @error('age')
+                                    <small class="text-danger"> {{$message}} </small>
+                                    @enderror
+                                    </div>
+                                </div> --}}
+
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user"
+                                    name="experience" value="{{__('UserIndex.YEARS')}}">
                                     @error('experience')
                                     <small class="text-danger"> {{$message}} </small>
                                     @enderror
                                     </div>
                                 </div>
+
+
+                                {{-- <div class="form-group row">
+                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                        <input type="number" class="form-control form-control-user"
+                                    name="experience" value="{{__('UserIndex.YEARS')}}">
+                                    @error('experience')
+                                    <small class="text-danger"> {{$message}} </small>
+                                    @enderror
+                                    </div>
+                                </div> --}}
                                 
-                                <input type="submit" value="Submit Request" class="btn btn-primary btn-user btn-block">
+                                <input type="submit" value="{{__('UserIndex.SUBMIT')}}" class="btn btn-primary btn-user btn-block">
                             </form>
                         </div>
                     </div>

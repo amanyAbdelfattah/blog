@@ -38,7 +38,7 @@
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Edit Service!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">{{__('Dashboard.EditService')}}!</h1>
                             </div>
                             <form method="POST" action="{{route('service.update' , $service->id)}}" enctype="multipart/form-data">
                                 <div class="row">
@@ -77,20 +77,11 @@
                                     @enderror
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-12 mb-3 mb-sm-0">
-                                        <input type="number" class="form-control form-control-user"
-                                    name="cat_id" value="{{$service->cat_id}}">
-                                    @error('cat_id')
-                                    <small class="text-danger"> {{$message}} </small>
-                                    @enderror
-                                    </div>
-                                </div>
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Upload Image</label>
                                     <input class="form-control" type="file" id="formFile" name="image">
                                 </div>
-                                <input type="submit" value="Update Service" class="btn btn-primary btn-user btn-block">
+                                <input type="submit" value="{{__('Dashboard.UpdateService')}}" class="btn btn-primary btn-user btn-block">
                             </form>
                         </div>
                     </div>

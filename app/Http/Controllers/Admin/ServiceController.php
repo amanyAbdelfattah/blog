@@ -125,7 +125,6 @@ class ServiceController extends Controller
         $service->service_title = $request->input('service_title');
         $service->service_desc = $request->input('service_desc');
         $service->price = $request->input('price');
-        $service->cat_id = $request->input('cat_id');
 
         if($request->hasFile('image')){
             $file = $request->file('image');

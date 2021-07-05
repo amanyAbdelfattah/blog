@@ -39,7 +39,7 @@
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create Post!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">{{__('Dashboard.CreatePost')}}!</h1>
                             </div>
                             <form method="POST" action="{{route('post.store')}}" class="user">
                                 <div class="row">
@@ -68,21 +68,7 @@
                                 <small class="text-danger"> {{$message}} </small>
                                     @enderror
                                 </div>
-                                {{-- <div class="form-group">
-                                    <input type="text" class="form-control form-control-user"
-                                    name="user_id" placeholder="Description">
-                                    @error('user_id')
-                                <small class="text-danger"> {{$message}} </small>
-                                    @enderror
-                                </div> --}}
-                                {{-- <div class="form-group">
-                                    <input type="text" class="form-control form-control-user"
-                                    name="user_id" placeholder="UserID">
-                                    @error('user_id')
-                                <small class="text-danger"> {{$message}} </small>
-                                    @enderror
-                                </div> --}}
-                                <input type="submit" value="Add Post" class="btn btn-primary btn-user btn-block">
+                                <input type="submit" value="{{__('Dashboard.AddPost')}}" class="btn btn-primary btn-user btn-block">
                             </form>
                         </div>
                     </div>

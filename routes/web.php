@@ -44,6 +44,7 @@ Route::group(
     ], function(){ 
         Route::get("/user" ,'User\Index@index')->middleware('auth','check.user')->name('user-view');
         Route::middleware('auth','check.user')->prefix("user")->group(function(){
+            Route::resource("/profile", 'User\Index');
             Route::resource("/jobapp" , 'User\JobappController');
             Route::resource("/orderservice" , 'User\OrderServiceController');
             Route::resource("/feedback" , 'User\FeedbackController');

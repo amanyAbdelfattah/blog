@@ -2,14 +2,14 @@
 @section('title') Dashboard @endsection
 @section ('content')
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
             <div class="p-5">
                 <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">All Services</h1>
+                    <h1 class="h4 text-gray-900 mb-4">{{__('Dashboard.AllServices')}}</h1>
                 </div>
-                <a class="btn btn-primary" href="{{route('service.create')}}">Add New Service</a>
+                <a class="btn btn-primary" href="{{route('service.create')}}">{{__('Dashboard.AddServices')}}</a>
             </div>
     <div class="row">
         @if (Session::has('success'))
@@ -20,33 +20,15 @@
         </div>
         @endif
     </div>
-    {{-- <div class="card" style="width: 18rem;">
-        @foreach ($services as $service)
-        <img src={{asset('uploads/service/' . $service->image)}} class="card-img-top">
-        <div class="card-body">
-            <h5 class="card-title">{{$service->service_title}}</h5>
-            <p class="card-text">{{$service->service_desc}}</p>
-            <p class="card-text">{{$service->price}}</p>
-            <td style="border-bottom-width: 0;">{{$service->category->cat_name}}</td>
-            <a href="{{route('service.show' , $service->id)}}" class="btn btn-info m-1">Show</a>
-            <a href="{{route('service.edit' , $service->id)}}" class="btn btn-warning m-1">Edit</a>
-            <form method="POST" action="{{route('service.destroy' , $service->id)}}">
-                @csrf
-                {{method_field('DELETE')}}
-                <input type="submit" class="btn btn-danger m-1" value="Delete">
-            </form>
-        </div>
-        @endforeach
-    </div> --}}
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">Service Image</th>
-            <th scope="col">Service Title</th>
-            <th scope="col">Service Description</th>
-            <th scope="col">Service Category</th>
-            <th scope="col">Service Price</th>
-            <th scope="col">Control</th>
+            <th scope="col">{{__('Dashboatd.ServiceImage')}}</th>
+            <th scope="col">{{__('Dashboatd.ServiceTitle')}}</th>
+            <th scope="col">{{__('Dashboatd.ServiceDescription')}}</th>
+            <th scope="col">{{__('Dashboatd.ServiceCategory')}}</th>
+            <th scope="col">{{__('Dashboatd.ServicePrice')}}</th>
+            <th scope="col">{{__('Dashboatd.Control')}}</th>
         </tr>
         </thead>
         <tbody>
@@ -58,14 +40,11 @@
                 <td style="border-bottom-width: 0;">{{$service->category->cat_name}}</td>
                 <td style="border-bottom-width: 0;">{{$service->price}}</td>
                 <td class="d-flex" style="border-bottom-width: 0;">
-                    <a class="btn btn-info m-1" href="{{route('service.show' , $service->id)}}">Show</a>
-                    <a class="btn btn-warning m-1" href="{{route('service.edit' , $service->id)}}">Edit</a>
-                    {{-- <a class="btn btn-info m-1" href="{{route('post.show' , $user->id)}}">Posts</a> --}}
-                    {{-- <a class="btn btn-danger" href="">Delete</a> --}} 
+                    <a class="btn btn-warning m-1" href="{{route('service.edit' , $service->id)}}">{{__('Dashboard.Edit')}}</a>
                     <form method="POST" action="{{route('service.destroy' , $service->id)}}">
                         @csrf
                         {{method_field('DELETE')}}
-                        <input type="submit" class="btn btn-danger m-1" value="Delete">
+                        <input type="submit" class="btn btn-danger m-1" value="{{__('Dashboard.Delete')}}">
                     </form>
                 </td>
             </tr>

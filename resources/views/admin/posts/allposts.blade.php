@@ -7,9 +7,9 @@
         <div class="col-lg-12">
             <div class="p-5">
                 <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">All Posts</h1>
+                    <h1 class="h4 text-gray-900 mb-4">{{__('Dashboard.AllPosts')}}</h1>
                 </div>
-                <a class="btn btn-primary" href="{{route('post.create')}}">Add Post</a>
+                <a class="btn btn-primary" href="{{route('post.create')}}">{{__('Dashboard.AddPost')}}</a>
             </div>
     <div class="row">
         @if (Session::has('success'))
@@ -23,10 +23,10 @@
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col">Written By</th>
-            <th scope="col">Control</th>
+            <th scope="col">{{__('Dashboard.Title')}}</th>
+            <th scope="col">{{__('Dashboard.Description')}}</th>
+            <th scope="col">{{__('Dashboard.WrittenBy')}}</th>
+            <th scope="col">{{__('Dashboard.Control')}}</th>
         </tr>
         </thead>
         <tbody>
@@ -36,13 +36,11 @@
                 <td>{{$post->description}}</td>
                 <td>{{$post->user->name}}</td>
                 <td class="d-flex">
-                    <a class="btn btn-info m-1" href="{{route('post.show' , $post->id)}}">Show</a>
-                    <a class="btn btn-warning m-1" href="{{route('post.edit' , $post->id)}}">Edit</a>
-                    {{-- <a class="btn btn-danger" href="">Delete</a> --}}
+                    <a class="btn btn-warning m-1" href="{{route('post.edit' , $post->id)}}">{{__('Dashboard.Edit')}}</a>
                     <form method="POST" action="{{route('post.destroy' , $post->id)}}">
                         @csrf
                         {{method_field('DELETE')}}
-                        <input type="submit" class="btn btn-danger m-1" value="Delete">
+                        <input type="submit" class="btn btn-danger m-1" value="{{__('Dashboard.Delete')}}">
                     </form>
                 </td>
             </tr>

@@ -38,7 +38,7 @@
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Edit Category!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">{{__('Dashboard.EditCategory')}}!</h1>
                             </div>
                             <form method="POST" action="{{route('categories.update' , $category->id)}}" enctype="multipart/form-data">
                                 <div class="row">
@@ -61,7 +61,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <input type="submit" value="Update Category" class="btn btn-primary btn-user btn-block">
+                                <input type="submit" value="{{__('Dashboard.UpdateCategory')}}" class="btn btn-primary btn-user btn-block">
                             </form>
                         </div>
                     </div>

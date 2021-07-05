@@ -11,11 +11,11 @@
     <div class="col-md-8">
         <div class="card-body">
         <h5 class="card-title" style="font-size:23px; color:black; font-weight:500;">{{$user->name}}</h5>
-        <p class="card-text d-block">Email Address: <span>{{$user->email}}</span></p>
-        <p class="card-text d-block">Phone Number: <span>{{$user->phoneno}}</span></p>
-        <p class="card-text d-block">Age: <span>{{$user->age}}</span></p>
-        <p class="card-text d-block">Years of Experience: <span>{{$user->experience}}</span></p>
-        <p class="card-text d-block">Posts: <span>{{$user->post}}</span></p>
+        <p class="card-text d-block">{{__('UserIndex.Email')}}: <span>{{$user->email}}</span></p>
+        <p class="card-text d-block">{{__('UserIndex.Phone')}}: <span>{{$user->phoneno}}</span></p>
+        <p class="card-text d-block">{{__('UserIndex.Age')}}: <span>{{$user->age}}</span></p>
+        <p class="card-text d-block">{{__('UserIndex.YEARS')}}: <span>{{$user->experience}}</span></p>
+        <p class="card-text d-block">{{__('Dashboard.Posts')}}: <span>{{$user->post}}</span></p>
         </div>
     </div>
     </div>
